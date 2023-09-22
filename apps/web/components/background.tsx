@@ -1,7 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const HOUR = 60 * 60 * 1000;
 const WALLPAPERS = {
@@ -24,21 +23,6 @@ interface BackgroundProps {
 export default function Background({ children }: BackgroundProps): JSX.Element {
   const [wallpaper, setWallpaper] = useState(WALLPAPERS.day);
 
-  const style: CSSProperties = useMemo(
-    () => ({
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundImage: `url(${wallpaper})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      zIndex: -1,
-    }),
-    [wallpaper],
-  );
-
   useEffect(() => {
     const interval = setInterval(() => {
       const hour = new Date().getHours();
@@ -49,5 +33,14 @@ export default function Background({ children }: BackgroundProps): JSX.Element {
     };
   }, []);
 
-  return <div style={style}>{children}</div>;
+  return (
+    <div
+      className="fixed left-0 top-0 z-[-1] h-full w-full bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${wallpaper})`,
+      }}
+    >
+      {children}
+    </div>
+  );
 }

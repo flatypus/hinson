@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Finder",
+    "icon": "finder.png"
+  },
+  {
+    "name": "Launchpad",
+    "icon": "launchpad.png"
+  },
+  {
+    "name": "Arc",
+    "icon": "arc.png"
+  },
+  {
+    "name": "Discord",
+    "icon": "discord.png"
+  },
+  {
+    "name": "Code",
+    "icon": "vscode.png"
+  },
+  {
+    "name": "iTerm",
+    "icon": "iterm.png"
+  },
+  {
+    "name": "Notion",
+    "icon": "notion.png"
+  }
+]

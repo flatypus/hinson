@@ -1,10 +1,11 @@
 import Background from "../components/background";
+import Dock from "../components/dock";
 
 export default function Page(): JSX.Element {
   return (
     <main>
       <Background>
-        <div>Hello</div>
+        <Dock />
       </Background>
     </main>
   );
