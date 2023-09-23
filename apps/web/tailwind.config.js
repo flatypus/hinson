@@ -13,6 +13,9 @@ module.exports = {
       backdropBlur: {
         "apple-blur": "16px",
       },
+      fontFamily: {
+        sf: ["San Francisco", "sans-serif"],
+      },
     },
   },
   plugins: [],
