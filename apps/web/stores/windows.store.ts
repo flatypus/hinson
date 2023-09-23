@@ -15,8 +15,8 @@ export class Window {
   active: boolean;
   mode: WindowMode;
   component: JSX.Element;
-  width = 600;
-  height = 400;
+  width = 640;
+  height = 480;
   x = 0;
   y = 0;
   private refresh: () => void;
