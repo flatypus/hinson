@@ -10,7 +10,8 @@ const WALLPAPERS = {
   sunset: "/wallpapers/sunrise.jpg",
 };
 
-const wallpaperByHour = (hour: number): string => {
+const wallpaperByHour = (): string => {
+  const hour = new Date().getHours();
   if (hour >= 9 && hour < 18) return WALLPAPERS.day;
   if (hour < 6 || hour >= 21) return WALLPAPERS.night;
   return WALLPAPERS.sunrise;
@@ -21,12 +22,11 @@ interface BackgroundProps {
 }
 
 export default function Background({ children }: BackgroundProps): JSX.Element {
-  const [wallpaper, setWallpaper] = useState(WALLPAPERS.day);
+  const [wallpaper, setWallpaper] = useState(wallpaperByHour());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const hour = new Date().getHours();
-      setWallpaper(wallpaperByHour(hour));
+      setWallpaper(wallpaperByHour());
     }, HOUR);
     return () => {
       clearInterval(interval);

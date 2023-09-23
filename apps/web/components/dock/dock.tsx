@@ -12,7 +12,7 @@ export default function Dock(): JSX.Element {
 
   return (
     <div className="mb-1 grid place-items-center">
-      <div className="flex flex-row rounded-2xl border-[0.25px] border-[#00000047] bg-apple-blur p-[2px] backdrop-blur-apple-blur">
+      <div className="flex flex-row rounded-2xl border-[0.25px] border-[#00000047] bg-apple-blur p-[4px] pb-[2px] backdrop-blur-apple-blur">
         {windows.map((app) => (
           <div className="grid place-items-center" key={app.name}>
             <button
