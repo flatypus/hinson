@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "apple-blur": "rgba(255,255,255,0.1)",
+        "apple-blur": "rgba(0,0,0,0.1)",
       },
       backdropBlur: {
         "apple-blur": "16px",

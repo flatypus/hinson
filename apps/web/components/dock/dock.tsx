@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import useWindowsStore from "@stores/windows.store";
+import { randomWindowTransform } from "../window/titlebar";
 
 // type Apps = typeof apps;
 
@@ -11,8 +12,8 @@ export default function Dock(): JSX.Element {
   const { windows, setActive } = useWindowsStore();
 
   return (
-    <div className="mb-1 grid place-items-center">
-      <div className="flex flex-row rounded-2xl border-[0.25px] border-[#00000047] bg-apple-blur p-[4px] pb-[2px] backdrop-blur-apple-blur">
+    <div className="relative m-8 grid place-items-center">
+      <div className="absolute flex flex-row rounded-2xl border-[0.25px] border-[#00000047] bg-apple-blur p-[4px] pb-[2px] backdrop-blur-apple-blur">
         {windows.map((app) => (
           <div className="grid place-items-center" key={app.name}>
             <button
@@ -20,6 +21,7 @@ export default function Dock(): JSX.Element {
                 setActive(app.name);
                 if (app.mode === "closed" || app.mode === "minimized") {
                   app.setMode("windowed");
+                  randomWindowTransform(app);
                 } else {
                   app.setMode("fullscreen");
                 }

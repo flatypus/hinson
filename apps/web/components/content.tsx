@@ -2,17 +2,18 @@
 
 import { useEffect } from "react";
 import useWindowsStore from "@stores/windows.store";
-import { randomWindowTransform } from "./window/titlebar";
+import { hide } from "./window/titlebar";
 import Window from "./window/window";
 
 export default function Content(): JSX.Element {
-  const { windows } = useWindowsStore();
+  const { windows, unfocusWindow } = useWindowsStore();
 
   useEffect(() => {
     windows.forEach((app) => {
-      randomWindowTransform(app);
+      hide(app, "closed", false);
+      unfocusWindow(app.name, "closed");
     });
-  }, [windows]);
+  }, [unfocusWindow, windows]);
 
   return (
     <div className="flex-1">

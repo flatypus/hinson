@@ -1,1 +1,6 @@
-export type WindowMode = "fullscreen" | "windowed" | "minimized" | "closed";
+export type WindowMode =
+  | "fullscreen"
+  | "windowed"
+  | "minimized"
+  | "closed"
+  | "hiding";

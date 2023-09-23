@@ -7,24 +7,47 @@ import { FullScreen } from "./fullscreen";
 
 export function randomWindowTransform(app: Window): void {
   const innerWidth = window.innerWidth;
-  const innerHeight = window.innerHeight;
+  const innerHeight = window.innerHeight - 64;
+  const newWidth = innerWidth / 2;
+  const newHeight = innerHeight / 2;
 
-  app.width = innerWidth / 2;
-  app.height = innerHeight / 2;
+  app.setTransform(
+    Math.floor(Math.random() * (innerWidth - newWidth)),
+    Math.floor(Math.random() * (innerHeight - newHeight)),
+    newWidth,
+    newHeight,
+  );
+}
 
-  app.x = Math.floor(Math.random() * (innerWidth - app.width));
-  app.y = Math.floor(Math.random() * (innerHeight - app.height));
+export function hide(
+  app: Window,
+  mode: "closed" | "minimized",
+  animate = true,
+): void {
+  if (animate) app.setMode("hiding");
+
+  app.setTransform(
+    window.innerWidth / 2 - 100,
+    window.innerHeight - 120,
+    0,
+    0,
+    animate,
+  );
 }
 
 export function TitleBar({ app }: { app: Window }): JSX.Element {
   const { unfocusWindow, setActive } = useWindowsStore();
+
   return (
-    <div className="drag-handle group flex items-center justify-between rounded-t-md bg-gradient-to-b from-[#323232] to-[#2a2a2a] px-2">
+    <div className="drag-handle group flex cursor-grab items-center justify-between rounded-t-md bg-gradient-to-b from-[#323232] to-[#2a2a2a] px-2">
       <div className="z-10 flex-shrink-0">
         <button
           className="mr-2 inline-block h-3 w-3 rounded-full bg-[#fe5f57]"
           onClick={() => {
-            unfocusWindow(app.name, "closed");
+            hide(app, "closed");
+            setTimeout(() => {
+              unfocusWindow(app.name, "closed");
+            }, 150);
           }}
           type="button"
         >
@@ -35,7 +58,10 @@ export function TitleBar({ app }: { app: Window }): JSX.Element {
         <button
           className="mr-2 inline-block h-3 w-3 rounded-full bg-[#febc2e]"
           onClick={() => {
-            unfocusWindow(app.name, "minimized");
+            hide(app, "minimized");
+            setTimeout(() => {
+              unfocusWindow(app.name, "minimized");
+            }, 150);
           }}
           type="button"
         >
@@ -52,8 +78,12 @@ export function TitleBar({ app }: { app: Window }): JSX.Element {
               randomWindowTransform(app);
             } else {
               app.setMode("fullscreen");
-              app.setPos(0, 0);
-              app.setSize(window.innerWidth, window.innerHeight - 64);
+              app.setTransform(
+                0,
+                0,
+                window.innerWidth,
+                window.innerHeight - 64,
+              );
             }
           }}
           type="button"
