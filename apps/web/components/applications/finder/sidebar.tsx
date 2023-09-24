@@ -17,7 +17,9 @@ export default function Sidebar(): JSX.Element {
 
   return (
     <div className="h-full bg-[#15024165] p-2 text-left">
-      <h1 className="ml-1 text-sm font-semibold text-[#67697d]">Favorites</h1>
+      <h1 className="mb-1 ml-1 text-sm font-semibold text-[#67697d]">
+        Favorites
+      </h1>
       <ul>
         <li className="text-sm font-thin text-white">
           {favorites?.map((value) => {
@@ -38,7 +40,7 @@ export default function Sidebar(): JSX.Element {
                 type="button"
               >
                 <value.icon
-                  className="mr-1 inline-block h-[14px] w-[14px]"
+                  className="mr-2 inline-block h-[14px] w-[14px]"
                   fill={themeColor}
                 />
                 {value.name}
