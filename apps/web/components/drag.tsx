@@ -7,7 +7,14 @@ export default function Drag(): JSX.Element {
   const [windowSize, setWindowSize] = useState([0, 0]);
 
   useEffect(() => {
-    setWindowSize([window.innerWidth, window.innerHeight - 64]);
+    const handleResize = (): void => {
+      setWindowSize([window.innerWidth, window.innerHeight - 64]);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
