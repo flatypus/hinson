@@ -14,6 +14,7 @@ export default function Sidebar(): JSX.Element {
     }
     return null;
   }, []);
+
   return (
     <div className="h-full bg-[#15024165] p-2 text-left">
       <h1 className="ml-1 text-sm font-semibold text-[#67697d]">Favorites</h1>

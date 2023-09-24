@@ -11,14 +11,24 @@ export default function Header(): JSX.Element {
         onClick={goBack}
         type="button"
       >
-        <ChevronLeftIcon className="h-4 w-4 text-[#b7b8bb]" />
+        <ChevronLeftIcon
+          className={`h-4 w-4 ${
+            fileStructureState > 0 ? "text-[#b7b8bb]" : "text-[#5c5e60]"
+          }`}
+        />
       </button>
       <button
         className="grid place-items-center"
         onClick={goForward}
         type="button"
       >
-        <ChevronRightIcon className="h-4 w-4 text-[#b7b8bb]" />
+        <ChevronRightIcon
+          className={`h-4 w-4 ${
+            fileStructureState < visitedHistory.length - 1
+              ? "text-[#b7b8bb]"
+              : "text-[#5c5e60]"
+          }`}
+        />
       </button>
       <h1 className="font-sf text-sm font-semibold text-white">
         {
