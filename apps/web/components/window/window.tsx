@@ -10,8 +10,9 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
   return (
     <Rnd
       bounds="parent"
-      disableDragging={isTouchDevice}
+      disableDragging={isTouchDevice || app.mode === "fullscreen"}
       dragHandleClassName="drag-handle"
+      enableResizing={app.mode !== "fullscreen"}
       minHeight={100}
       minWidth={200}
       onDragStop={(e, d) => {

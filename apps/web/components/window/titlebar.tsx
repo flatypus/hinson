@@ -8,7 +8,12 @@ import { FullScreen } from "./fullscreen";
 export function TitleBar({ app }: { app: Window }): JSX.Element {
   const { isTouchDevice } = useSettingsStore();
   return (
-    <div className="drag-handle group flex cursor-grab items-center justify-between rounded-t-md bg-gradient-to-b from-[#323232] to-[#2a2a2a] px-2">
+    <div
+      className="drag-handle group flex items-center justify-between rounded-t-md bg-gradient-to-b from-[#323232] to-[#2a2a2a] px-2"
+      style={{
+        cursor: isTouchDevice || app.mode === "fullscreen" ? "default" : "grab",
+      }}
+    >
       <div className="z-10 flex-shrink-0">
         <button
           className="mr-2 inline-block h-3 w-3 rounded-full bg-[#fe5f57]"
