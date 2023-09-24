@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
 import { Rnd } from "react-rnd";
 import type { Window } from "@stores/window";
+import useSettingsStore from "@stores/settings.store";
 import { TitleBar } from "./titlebar";
 
 export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
+  const { isTouchDevice } = useSettingsStore();
   return (
     <Rnd
       bounds="parent"
+      disableDragging={isTouchDevice}
       dragHandleClassName="drag-handle"
       minHeight={100}
       minWidth={200}

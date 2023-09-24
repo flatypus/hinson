@@ -23,11 +23,11 @@ export default function Footer(): JSX.Element {
               <Image
                 alt="folder"
                 className="text-[#b7b8bb]"
-                height={16}
+                height={12}
                 src="/icons/folder.png"
-                width={16}
+                width={12}
               />
-              <h1 className="text-sm text-[#9c9c9e]">{file}</h1>
+              <h1 className="text-xs text-[#9c9c9e]">{file}</h1>
               {visitedHistory[fileStructureState][
                 visitedHistory[fileStructureState].length - 1
               ] !== file && <ChevronRightIcon className="h-3 w-3" />}

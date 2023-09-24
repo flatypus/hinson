@@ -2,10 +2,16 @@
 
 import { useEffect } from "react";
 import useWindowsStore from "@stores/windows.store";
+import useSettingsStore from "@stores/settings.store";
 import Window from "./window/window";
 
 export default function Content(): JSX.Element {
   const { windows } = useWindowsStore();
+  const { setIsTouchDevice } = useSettingsStore();
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window);
+  }, [setIsTouchDevice]);
 
   useEffect(() => {
     windows.forEach((app) => {

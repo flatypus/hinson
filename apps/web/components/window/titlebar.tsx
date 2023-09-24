@@ -1,10 +1,12 @@
 import type { Window } from "@stores/window";
+import useSettingsStore from "@stores/settings.store";
 import { Close } from "./close";
 import { Minimize } from "./minimize";
 import { UnFullScreen } from "./unfullscreen";
 import { FullScreen } from "./fullscreen";
 
 export function TitleBar({ app }: { app: Window }): JSX.Element {
+  const { isTouchDevice } = useSettingsStore();
   return (
     <div className="drag-handle group flex cursor-grab items-center justify-between rounded-t-md bg-gradient-to-b from-[#323232] to-[#2a2a2a] px-2">
       <div className="z-10 flex-shrink-0">
@@ -15,7 +17,11 @@ export function TitleBar({ app }: { app: Window }): JSX.Element {
           }}
           type="button"
         >
-          <div className="opacity-0 group-hover:opacity-100">
+          <div
+            className={`${
+              !isTouchDevice && "opacity-0"
+            } group-hover:opacity-100`}
+          >
             <Close />
           </div>
         </button>
@@ -26,7 +32,11 @@ export function TitleBar({ app }: { app: Window }): JSX.Element {
           }}
           type="button"
         >
-          <div className="opacity-0 group-hover:opacity-100">
+          <div
+            className={`${
+              !isTouchDevice && "opacity-0"
+            } group-hover:opacity-100`}
+          >
             <Minimize />
           </div>
         </button>
@@ -41,7 +51,11 @@ export function TitleBar({ app }: { app: Window }): JSX.Element {
           }}
           type="button"
         >
-          <div className="opacity-0 group-hover:opacity-100">
+          <div
+            className={`${
+              !isTouchDevice && "opacity-0"
+            } group-hover:opacity-100`}
+          >
             {app.mode === "fullscreen" ? <UnFullScreen /> : <FullScreen />}
           </div>
         </button>

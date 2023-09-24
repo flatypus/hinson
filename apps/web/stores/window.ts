@@ -98,8 +98,8 @@ export class Window {
   private randomWindowTransform(): void {
     const { width: innerWidth, height: innerHeight } = this.getWindowSize();
 
-    const newWidth = innerWidth / 2;
-    const newHeight = innerHeight / 2;
+    const newWidth = (innerWidth * 2) / 3;
+    const newHeight = (innerHeight * 2) / 3;
 
     this.setTransform(
       Math.floor(Math.random() * (innerWidth - newWidth)),

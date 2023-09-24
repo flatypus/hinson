@@ -17,11 +17,11 @@ export default function Sidebar(): JSX.Element {
 
   return (
     <div className="h-full bg-[#15024165] p-2 text-left">
-      <h1 className="mb-1 ml-1 text-sm font-semibold text-[#67697d]">
+      <h1 className="mb-1 ml-1 text-xs font-semibold text-[#67697d]">
         Favorites
       </h1>
       <ul>
-        <li className="text-sm font-thin text-white">
+        <li className="text-xs font-thin text-white">
           {favorites?.map((value) => {
             return (
               <button
