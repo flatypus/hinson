@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import useWindowsStore from "@stores/windows.store";
 import useSettingsStore from "@stores/settings.store";
 import Window from "./window/window";
+import Drag from "./drag";
 
 export default function Content(): JSX.Element {
   const { windows } = useWindowsStore();
@@ -31,6 +32,7 @@ export default function Content(): JSX.Element {
         }
         return null;
       })}
+      <Drag />
     </div>
   );
 }
