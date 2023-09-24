@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import useWindowsStore from "@stores/windows.store";
-import { randomWindowTransform } from "../window/titlebar";
 
 // type Apps = typeof apps;
 
 const ICON_SIZE = 48;
 
 export default function Dock(): JSX.Element {
-  const { windows, setActive } = useWindowsStore();
+  const { windows } = useWindowsStore();
 
   return (
     <div className="relative m-8 grid place-items-center">
@@ -18,12 +17,19 @@ export default function Dock(): JSX.Element {
           <div className="grid place-items-center" key={app.name}>
             <button
               onClick={() => {
-                setActive(app.name);
-                if (app.mode === "closed" || app.mode === "minimized") {
-                  app.setMode("windowed");
-                  randomWindowTransform(app);
+                // TODO: fix this logic?
+                if (app.mode === "fullscreen") {
+                  if (app.active) {
+                    app.window();
+                  } else {
+                    app.setActiveWindow();
+                  }
+                } else if (app.mode !== "windowed") {
+                  app.window();
+                } else if (app.active) {
+                  app.fullscreen();
                 } else {
-                  app.setMode("fullscreen");
+                  app.setActiveWindow();
                 }
               }}
               type="button"

@@ -2,12 +2,10 @@
 
 import React from "react";
 import { Rnd } from "react-rnd";
-import type { Window } from "@stores/windows.store";
-import useWindowsStore from "@stores/windows.store";
+import type { Window } from "@app/stores/window";
 import { TitleBar } from "./titlebar";
 
 export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
-  const { setActive } = useWindowsStore();
   return (
     <Rnd
       bounds="parent"
@@ -18,7 +16,7 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
         app.setTransform(d.x, d.y, app.width, app.height, false);
       }}
       onMouseDown={() => {
-        setActive(app.name);
+        app.setActiveWindow();
       }}
       onResizeStop={(e, direction, ref, delta, position) => {
         app.setTransform(
@@ -35,12 +33,10 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
     >
       <div
         className={`relative h-full w-full rounded-lg border-[1px] border-[#6c6c6e] bg-apple-blur text-center text-black shadow-sm backdrop-blur-apple-blur ${
-          app.mode === "minimized" ||
-          app.mode === "closed" ||
-          app.mode === "hiding"
+          ["minimized", "closed", "hiding"].includes(app.mode)
             ? "opacity-0"
             : "opacity-100"
-        } transition-opacity duration-300`}
+        } transition-opacity duration-500`}
       >
         <TitleBar app={app} />
         <div className="z-10">{app.component}</div>

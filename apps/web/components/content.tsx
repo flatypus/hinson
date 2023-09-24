@@ -2,18 +2,20 @@
 
 import { useEffect } from "react";
 import useWindowsStore from "@stores/windows.store";
-import { hide } from "./window/titlebar";
 import Window from "./window/window";
 
 export default function Content(): JSX.Element {
-  const { windows, unfocusWindow } = useWindowsStore();
+  const { windows } = useWindowsStore();
 
   useEffect(() => {
     windows.forEach((app) => {
-      hide(app, "closed", false);
-      unfocusWindow(app.name, "closed");
+      app.injectGetSize(() => ({
+        width: window.innerWidth,
+        height: window.innerHeight - 64,
+      }));
+      app.hide(false);
     });
-  }, [unfocusWindow, windows]);
+  }, [windows]);
 
   return (
     <div className="flex-1">
