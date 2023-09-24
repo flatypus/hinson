@@ -1,8 +1,10 @@
+import Finder from "@app/components/applications/finder";
+
 export const apps = [
   {
     name: "Finder",
     icon: "finder.png",
-    component: <div />,
+    component: Finder,
   },
   {
     name: "Launchpad",

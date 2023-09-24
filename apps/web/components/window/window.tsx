@@ -39,7 +39,9 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
         } transition-opacity duration-500`}
       >
         <TitleBar app={app} />
-        <div className="z-10">{app.component}</div>
+        <div className="z-10 h-[calc(100%-22px)] w-full overflow-hidden">
+          {typeof app.component === "function" && <app.component />}
+        </div>
       </div>
     </Rnd>
   );

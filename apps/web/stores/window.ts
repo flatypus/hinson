@@ -5,7 +5,7 @@ export class Window {
   icon: string;
   active: boolean;
   mode: WindowMode;
-  component: JSX.Element;
+  component: JSX.Element | (() => JSX.Element);
   width = 0;
   height = 0;
   x = 0;
@@ -22,7 +22,7 @@ export class Window {
   constructor(
     name: string,
     icon: string,
-    component: JSX.Element,
+    component: JSX.Element | (() => JSX.Element),
     getWindows: () => Window[],
     refreshWindows: () => void,
   ) {
