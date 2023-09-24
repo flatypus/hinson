@@ -1,4 +1,4 @@
-import type { Window } from "@app/stores/window";
+import type { Window } from "@stores/window";
 import { Close } from "./close";
 import { Minimize } from "./minimize";
 import { UnFullScreen } from "./unfullscreen";

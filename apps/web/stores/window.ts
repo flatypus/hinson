@@ -1,4 +1,4 @@
-import type { WindowMode } from "@app/lib/types";
+import type { WindowMode } from "@lib/types";
 
 export class Window {
   name: string;
@@ -85,6 +85,7 @@ export class Window {
         this.height =
           start.height + (target.height - start.height) * ease(frame / frames);
       }
+
       this.refreshWindows();
       frame++;
       if (frame < frames) {

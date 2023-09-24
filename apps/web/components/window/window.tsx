@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Rnd } from "react-rnd";
-import type { Window } from "@app/stores/window";
+import type { Window } from "@stores/window";
 import { TitleBar } from "./titlebar";
 
 export default function WindowWrapper({ app }: { app: Window }): JSX.Element {

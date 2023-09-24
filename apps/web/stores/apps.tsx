@@ -1,4 +1,4 @@
-import Finder from "@app/components/applications/finder";
+import Finder from "@components/applications/finder/finder";
 
 export const apps = [
   {
