@@ -1,26 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import useElementSize from "@lib/hooks/use-element-size";
 
 export default function Drag(): JSX.Element {
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const [startedDrag, setStartedDrag] = useState(false);
-  const canvasReference = useRef<HTMLCanvasElement>(null);
-  const [windowSize, setWindowSize] = useState([0, 0]);
-
-  useEffect(() => {
-    const handleResize = (): void => {
-      setWindowSize([window.innerWidth, window.innerHeight - 64]);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const {
+    width,
+    height,
+    elementReference: canvasReference,
+  } = useElementSize<HTMLCanvasElement>();
 
   return (
     <canvas
       className="absolute left-0 top-0"
-      height={windowSize[1]}
+      height={height}
       onMouseDown={(e) => {
         setStartPos({ x: e.clientX, y: e.clientY });
         setStartedDrag(true);
@@ -54,11 +47,11 @@ export default function Drag(): JSX.Element {
       }}
       ref={canvasReference}
       style={{
-        width: windowSize[0],
-        height: windowSize[1],
+        width,
+        height,
         cursor: startedDrag ? "crosshair" : "default",
       }}
-      width={windowSize[0]}
+      width={width}
     />
   );
 }
