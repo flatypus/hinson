@@ -1,3 +1,4 @@
+import Arc from "@components/applications/arc/arc";
 import Finder from "@components/applications/finder/finder";
 
 export const apps = [
@@ -14,7 +15,7 @@ export const apps = [
   {
     name: "Arc",
     icon: "arc.png",
-    component: <div />,
+    component: Arc,
   },
   {
     name: "Discord",

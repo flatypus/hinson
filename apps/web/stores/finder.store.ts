@@ -12,7 +12,7 @@ interface FinderState {
 
 const useFinderStore = create<FinderState>((set, get) => {
   return {
-    visitedHistory: [["hinson"]],
+    visitedHistory: [["hinson", "AboutMe"]],
     setVisitedHistory: (visitedHistory) => {
       set({ visitedHistory });
     },
@@ -22,6 +22,7 @@ const useFinderStore = create<FinderState>((set, get) => {
     },
     goToDirectory(path: string[]) {
       const visitedHistory = get().visitedHistory;
+      if (visitedHistory[visitedHistory.length - 1] === path) return;
       set({
         visitedHistory: [...visitedHistory, path],
         fileStructureState: visitedHistory.length,

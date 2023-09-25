@@ -22,6 +22,9 @@ export default function Content(): JSX.Element {
       }));
       app.hide(false);
     });
+    const finder = windows.find((app) => app.name === "Finder");
+    if (!finder) return;
+    finder.window();
   }, [windows]);
 
   return (
