@@ -12,7 +12,7 @@ interface FinderState {
 
 const useFinderStore = create<FinderState>((set, get) => {
   return {
-    visitedHistory: [["hinson", "AboutMe"]],
+    visitedHistory: [["hinson", "Welcome"]],
     setVisitedHistory: (visitedHistory) => {
       set({ visitedHistory });
     },

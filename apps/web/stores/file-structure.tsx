@@ -88,18 +88,23 @@ export const fileStructure = new Directory({
       name: "hinson",
       children: [
         new Directory({
-          name: "AboutMe",
+          name: "Welcome",
           icon: HomeIcon,
           children: [
             new File({
               name: "Welcome!.md",
               icon: MarkdownIcon,
-              content: <MarkdownPage />,
+              content: <MarkdownPage path="/markdown/Welcome!.md" />,
             }),
             new File({
               name: "AboutMe.md",
               icon: MarkdownIcon,
               content: <div />,
+            }),
+            new File({
+              name: "Credits.md",
+              icon: MarkdownIcon,
+              content: <MarkdownPage path="/markdown/Credits.md" />,
             }),
           ],
         }),

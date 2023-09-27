@@ -38,7 +38,7 @@ export default function Content(): JSX.Element {
     setTimeout(() => {
       const welcome = fileStructure.traverse([
         "hinson",
-        "AboutMe",
+        "Welcome",
         "Welcome!.md",
       ]);
 
