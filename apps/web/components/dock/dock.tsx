@@ -3,8 +3,6 @@
 import Image from "next/image";
 import useWindowsStore from "@stores/windows.store";
 
-// type Apps = typeof apps;
-
 const ICON_SIZE = 48;
 
 export default function Dock(): JSX.Element {

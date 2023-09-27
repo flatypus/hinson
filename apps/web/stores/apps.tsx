@@ -1,12 +1,11 @@
 import Arc from "@components/applications/arc/arc";
 import ComingSoon from "@components/applications/coming_soon/coming-soon";
-import Finder from "@components/applications/finder/finder";
 
 export const apps = [
   {
     name: "Finder",
     icon: "finder.png",
-    component: Finder,
+    component: <div />,
   },
   {
     name: "Launchpad",

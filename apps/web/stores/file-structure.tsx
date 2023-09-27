@@ -9,6 +9,7 @@ import type { IconProps } from "@primer/octicons-react";
 import type { FunctionComponent } from "react";
 import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
+import MarkdownPage from "@components/applications/markdown-page/markdown-page";
 
 export type Icon = FunctionComponent<IconProps>;
 
@@ -89,7 +90,7 @@ export const fileStructure = new Directory({
             new File({
               name: "Welcome!.md",
               icon: MarkdownIcon,
-              content: <div />,
+              content: <MarkdownPage />,
             }),
             new File({
               name: "AboutMe.md",

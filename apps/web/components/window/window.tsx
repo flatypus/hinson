@@ -3,6 +3,7 @@
 import { Rnd } from "react-rnd";
 import type { Window } from "@stores/window";
 import useSettingsStore from "@stores/settings.store";
+import Finder from "@components/applications/finder/finder";
 import { TitleBar } from "./titlebar";
 
 export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
@@ -43,7 +44,12 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
       >
         <TitleBar app={app} />
         <div className="z-10 h-[calc(100%-22px)] w-full overflow-hidden">
-          {typeof app.component === "function" && <app.component />}
+          {/* Circular dependency resolution... :p */}
+          {app.name === "Finder" ? (
+            <Finder />
+          ) : (
+            typeof app.component === "function" && <app.component />
+          )}
         </div>
       </div>
     </Rnd>
