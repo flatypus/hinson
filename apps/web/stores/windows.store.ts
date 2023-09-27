@@ -28,6 +28,13 @@ const useWindowsStore = create<WindowState>((set, get) => {
     component,
   }: Pick<Window, "name" | "icon" | "component">): void => {
     const { windows, getWindowSize } = get();
+
+    const findExisting = windows.find((window) => window.name === name);
+    if (findExisting) {
+      findExisting.window();
+      return;
+    }
+
     const window = new Window({
       name,
       icon,

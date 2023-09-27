@@ -45,11 +45,7 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
         <TitleBar app={app} />
         <div className="z-10 h-[calc(100%-22px)] w-full overflow-hidden">
           {/* Circular dependency resolution... :p */}
-          {app.name === "Finder" ? (
-            <Finder />
-          ) : (
-            typeof app.component === "function" && <app.component />
-          )}
+          {app.name === "Finder" ? <Finder /> : app.component}
         </div>
       </div>
     </Rnd>

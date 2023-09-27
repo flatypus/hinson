@@ -10,31 +10,31 @@ export const apps = [
   {
     name: "Launchpad",
     icon: "launchpad.png",
-    component: ComingSoon,
+    component: <ComingSoon />,
   },
   {
     name: "Arc",
     icon: "arc.png",
-    component: Arc,
+    component: <Arc />,
   },
   {
     name: "Discord",
     icon: "discord.png",
-    component: ComingSoon,
+    component: <ComingSoon />,
   },
   {
     name: "Code",
     icon: "vscode.png",
-    component: ComingSoon,
+    component: <ComingSoon />,
   },
   {
     name: "iTerm",
     icon: "iterm.png",
-    component: ComingSoon,
+    component: <ComingSoon />,
   },
   {
     name: "Notion",
     icon: "notion.png",
-    component: ComingSoon,
+    component: <ComingSoon />,
   },
 ];

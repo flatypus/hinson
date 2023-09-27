@@ -57,6 +57,10 @@ export class Directory extends FSNode {
     if (node instanceof Directory) {
       return node.traverse(rest);
     }
+
+    if (node instanceof File) {
+      return node;
+    }
     return null;
   }
 }

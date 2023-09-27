@@ -4,7 +4,7 @@ import type { Icon } from "./file-structure";
 interface WindowConstructor {
   name: string;
   icon: Icon | string;
-  component: JSX.Element | (() => JSX.Element);
+  component: JSX.Element;
   getWindows: () => Window[];
   refreshWindows: () => void;
   active?: boolean;
@@ -17,7 +17,7 @@ export class Window {
   icon: Icon | string;
   active: boolean;
   mode: WindowMode;
-  component: JSX.Element | (() => JSX.Element);
+  component: JSX.Element;
   width = 0;
   height = 0;
   x = 0;

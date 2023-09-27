@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         "apple-blur": "rgba(0,0,0,0.1)",
+        "markdown-github-black": "#0d111688",
       },
       backdropBlur: {
         "apple-blur": "16px",
