@@ -7,7 +7,7 @@ import Window from "./window/window";
 import Drag from "./drag";
 
 export default function Content(): JSX.Element {
-  const { windows } = useWindowsStore();
+  const { windows, setGetWindowSize } = useWindowsStore();
   const { setIsTouchDevice } = useSettingsStore();
 
   useEffect(() => {
@@ -15,17 +15,25 @@ export default function Content(): JSX.Element {
   }, [setIsTouchDevice]);
 
   useEffect(() => {
+    const getWindowSize = (): {
+      width: number;
+      height: number;
+    } => ({
+      width: window.innerWidth,
+      height: window.innerHeight - 64,
+    });
+
+    setGetWindowSize(getWindowSize);
+
     windows.forEach((app) => {
-      app.injectGetSize(() => ({
-        width: window.innerWidth,
-        height: window.innerHeight - 64,
-      }));
+      app.injectGetSize(getWindowSize);
       app.hide(false);
     });
+
     const finder = windows.find((app) => app.name === "Finder");
     if (!finder) return;
     finder.window();
-  }, [windows]);
+  }, [setGetWindowSize, windows]);
 
   return (
     <div className="flex-1">

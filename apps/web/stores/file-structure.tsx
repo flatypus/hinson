@@ -7,10 +7,10 @@ import {
 } from "@primer/octicons-react";
 import type { IconProps } from "@primer/octicons-react";
 import type { FunctionComponent } from "react";
-import { MarkdownIcon } from "@components/image_icons/";
+import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
 
-export type Icon = FunctionComponent<IconProps> | string;
+export type Icon = FunctionComponent<IconProps>;
 
 export class FSNode {
   name: string;
@@ -20,10 +20,13 @@ export class FSNode {
     icon = FileDirectoryIcon,
   }: {
     name: string;
-    icon?: Icon;
+    icon?: Icon | string;
   }) {
     this.name = name;
-    this.icon = icon;
+    this.icon =
+      typeof icon === "string"
+        ? () => IconFromPath({ path: icon, alt: name })
+        : icon;
   }
 }
 
@@ -35,7 +38,7 @@ export class Directory extends FSNode {
     children = [],
   }: {
     name: string;
-    icon?: Icon;
+    icon?: Icon | string;
     children?: FSNode[];
   }) {
     super({ name, icon });
@@ -65,7 +68,7 @@ export class File extends FSNode {
     content,
   }: {
     name: string;
-    icon?: Icon;
+    icon?: Icon | string;
     content?: JSX.Element;
   }) {
     super({ name, icon });

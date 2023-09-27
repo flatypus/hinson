@@ -1,8 +1,20 @@
 import type { WindowMode } from "@lib/types";
+import type { Icon } from "./file-structure";
+
+interface WindowConstructor {
+  name: string;
+  icon: Icon | string;
+  component: JSX.Element | (() => JSX.Element);
+  getWindows: () => Window[];
+  refreshWindows: () => void;
+  active?: boolean;
+  mode?: WindowMode;
+  docked?: boolean;
+}
 
 export class Window {
   name: string;
-  icon: string;
+  icon: Icon | string;
   active: boolean;
   mode: WindowMode;
   component: JSX.Element | (() => JSX.Element);
@@ -10,6 +22,7 @@ export class Window {
   height = 0;
   x = 0;
   y = 0;
+  docked: boolean;
 
   private defaultFps = 180;
   private defaultTime = 200;
@@ -19,23 +32,27 @@ export class Window {
     return { width: 0, height: 0 };
   };
 
-  constructor(
-    name: string,
-    icon: string,
-    component: JSX.Element | (() => JSX.Element),
-    getWindows: () => Window[],
-    refreshWindows: () => void,
-  ) {
+  constructor({
+    name,
+    icon,
+    component,
+    getWindows,
+    refreshWindows,
+    active = false,
+    mode = "closed",
+    docked = false,
+  }: WindowConstructor) {
     this.name = name;
     this.icon = icon;
-    this.active = false;
-    this.mode = "closed";
+    this.active = active;
+    this.mode = mode;
     this.component = component;
+    this.refreshWindows = refreshWindows;
+    this.docked = docked;
     this.getWindows = () => {
       const allWindows = getWindows();
       return allWindows.filter((window) => window.name !== this.name);
     };
-    this.refreshWindows = refreshWindows;
   }
 
   private setMode(mode: WindowMode): void {

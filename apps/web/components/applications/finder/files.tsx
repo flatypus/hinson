@@ -1,9 +1,12 @@
 import { useMemo } from "react";
 import useFinderStore from "@stores/finder.store";
-import { Directory, fileStructure } from "@stores/file-structure";
-import { FileDirectoryIcon, IconFromPath } from "@components/image_icons";
+import type { Icon } from "@stores/file-structure";
+import { Directory, File, fileStructure } from "@stores/file-structure";
+import useWindowsStore from "@stores/windows.store";
+import { FileDirectoryIcon } from "@components/image_icons";
 
 export default function Files(): JSX.Element {
+  const { addWindow } = useWindowsStore();
   const { visitedHistory, goToDirectory, fileStructureState } =
     useFinderStore();
 
@@ -14,6 +17,22 @@ export default function Files(): JSX.Element {
     }
     return null;
   }, [fileStructureState, visitedHistory]);
+
+  const handleOpenFile = ({
+    name,
+    icon,
+    component,
+  }: {
+    name: string;
+    icon: Icon | string;
+    component: JSX.Element | (() => JSX.Element);
+  }): void => {
+    addWindow({
+      name,
+      icon,
+      component,
+    });
+  };
 
   return (
     <div className="flex-1 border-b-[1px] border-[#444548] bg-[#232529]">
@@ -30,17 +49,21 @@ export default function Files(): JSX.Element {
                     ...visitedHistory[fileStructureState],
                     value.name,
                   ]);
+                } else if (value instanceof File) {
+                  if (!value.content) return;
+                  handleOpenFile({
+                    name: value.name,
+                    icon: value.icon,
+                    component: value.content,
+                  });
                 }
               }}
               type="button"
             >
-              {typeof value.icon === "string" && (
-                <IconFromPath alt={value.name} path={value.icon} />
-              )}
               {value instanceof Directory ? (
                 <FileDirectoryIcon />
               ) : (
-                typeof value.icon === "function" && <value.icon />
+                <value.icon />
               )}
               <p className="text-xs text-[#9b9c9d]">{value.name}</p>
             </button>
