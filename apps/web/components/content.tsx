@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import useWindowsStore from "@stores/windows.store";
 import useSettingsStore from "@stores/settings.store";
-import { File, fileStructure } from "@stores/file-structure";
+import { File, fileStructure } from "@components/shared/file-structure";
 import Window from "./window/window";
 import Drag from "./drag";
 
-export default function Content(): JSX.Element {
+export default function Content({
+  path,
+}: {
+  path: string[] | undefined;
+}): JSX.Element {
+  const router = useRouter();
   const { windows, setGetWindowSize, addWindow } = useWindowsStore();
   const { setIsTouchDevice } = useSettingsStore();
 
@@ -16,6 +22,19 @@ export default function Content(): JSX.Element {
   }, [setIsTouchDevice]);
 
   useEffect(() => {
+    let file = fileStructure.traverse(["hinson", "Welcome", "Welcome!.md"]);
+    if (path && path.length > 0) {
+      const possibleFile = fileStructure.traverse(path);
+      if (possibleFile && possibleFile instanceof File) {
+        file = possibleFile;
+      } else {
+        router.push("/");
+        return;
+      }
+    }
+
+    // reset route
+
     const getWindowSize = (): {
       width: number;
       height: number;
@@ -36,21 +55,14 @@ export default function Content(): JSX.Element {
     finder.window();
 
     setTimeout(() => {
-      const welcome = fileStructure.traverse([
-        "hinson",
-        "Welcome",
-        "Welcome!.md",
-      ]);
-
-      if (!welcome || !(welcome instanceof File) || !welcome.content) return;
-
+      if (!file || !(file instanceof File) || !file.content) return;
       addWindow({
-        name: welcome.name,
-        icon: welcome.icon,
-        component: welcome.content,
+        name: file.name,
+        icon: file.icon,
+        component: file.content,
       });
     }, 300);
-  }, [addWindow, setGetWindowSize, windows]);
+  }, [addWindow, path, router, setGetWindowSize, windows]);
 
   return (
     <div className="flex-1">

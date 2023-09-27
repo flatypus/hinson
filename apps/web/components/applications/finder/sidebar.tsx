@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { fileStructure, Directory } from "@stores/file-structure";
+import { fileStructure, Directory } from "@components/shared/file-structure";
 import useFinderStore from "@stores/finder.store";
 import useSettingsStore from "@stores/settings.store";
 

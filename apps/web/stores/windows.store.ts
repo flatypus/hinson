@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { apps } from "./apps";
-import { Window } from "./window";
+import { apps } from "../components/shared/apps";
+import { Window } from "../lib/classes/window";
 
 type GetWindowSize = () => { width: number; height: number };
 

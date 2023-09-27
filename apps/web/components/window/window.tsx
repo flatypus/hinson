@@ -1,7 +1,7 @@
 "use client";
 
 import { Rnd } from "react-rnd";
-import type { Window } from "@stores/window";
+import type { Window } from "@lib/classes/window";
 import useSettingsStore from "@stores/settings.store";
 import Finder from "@components/applications/finder/finder";
 import { TitleBar } from "./titlebar";

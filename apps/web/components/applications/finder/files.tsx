@@ -1,7 +1,11 @@
 import { useMemo } from "react";
 import useFinderStore from "@stores/finder.store";
-import type { Icon } from "@stores/file-structure";
-import { Directory, File, fileStructure } from "@stores/file-structure";
+import type { Icon } from "@components/shared/file-structure";
+import {
+  Directory,
+  File,
+  fileStructure,
+} from "@components/shared/file-structure";
 import useWindowsStore from "@stores/windows.store";
 import { FileDirectoryIcon } from "@components/image_icons";
 
@@ -25,7 +29,7 @@ export default function Files(): JSX.Element {
   }: {
     name: string;
     icon: Icon | string;
-    component: JSX.Element | (() => JSX.Element);
+    component: JSX.Element;
   }): void => {
     addWindow({
       name,

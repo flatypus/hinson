@@ -5,8 +5,8 @@ import {
   MailIcon,
   RocketIcon,
 } from "@primer/octicons-react";
-import type { IconProps } from "@primer/octicons-react";
 import type { FunctionComponent } from "react";
+import type { IconProps } from "@primer/octicons-react";
 import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
 import MarkdownPage from "@components/applications/markdown-page/markdown-page";
@@ -52,7 +52,9 @@ export class Directory extends FSNode {
     }
 
     const [next, ...rest] = path;
-    const node = this.children.find((value) => value.name === next);
+    const node = this.children.find(
+      (value) => value.name.toLowerCase() === next.toLowerCase(),
+    );
 
     if (node instanceof Directory) {
       return node.traverse(rest);
@@ -99,7 +101,7 @@ export const fileStructure = new Directory({
             new File({
               name: "AboutMe.md",
               icon: MarkdownIcon,
-              content: <div />,
+              content: <MarkdownPage path="/markdown/About.md" />,
             }),
             new File({
               name: "Credits.md",
@@ -115,12 +117,12 @@ export const fileStructure = new Directory({
             new File({
               name: "EduBeyond.md",
               icon: MarkdownIcon,
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
               name: "YouTube.md",
               icon: MarkdownIcon,
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
           ],
         }),
@@ -131,7 +133,7 @@ export const fileStructure = new Directory({
             new File({
               name: "ContactMe.md",
               icon: MarkdownIcon,
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
           ],
         }),
@@ -147,22 +149,22 @@ export const fileStructure = new Directory({
             new File({
               name: "Discord",
               icon: "/icons/discord.png",
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
-              name: "Code.md",
+              name: "Code",
               icon: "/icons/vscode.png",
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
-              name: "iTerm.md",
+              name: "iTerm",
               icon: "/icons/iterm.png",
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
-              name: "Notion.md",
+              name: "Notion",
               icon: "/icons/notion.png",
-              content: <div />,
+              content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
           ],
         }),

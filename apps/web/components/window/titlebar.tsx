@@ -1,4 +1,4 @@
-import type { Window } from "@stores/window";
+import type { Window } from "@lib/classes/window";
 import useSettingsStore from "@stores/settings.store";
 import { Close } from "./close";
 import { Minimize } from "./minimize";

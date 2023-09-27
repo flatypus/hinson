@@ -1,5 +1,5 @@
 import type { WindowMode } from "@lib/types";
-import type { Icon } from "./file-structure";
+import type { Icon } from "../../components/shared/file-structure";
 
 interface WindowConstructor {
   name: string;
