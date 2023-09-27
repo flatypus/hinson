@@ -1,4 +1,5 @@
 import Arc from "@components/applications/arc/arc";
+import ComingSoon from "@components/applications/coming_soon/coming-soon";
 import Finder from "@components/applications/finder/finder";
 
 export const apps = [
@@ -10,7 +11,7 @@ export const apps = [
   {
     name: "Launchpad",
     icon: "launchpad.png",
-    component: <div />,
+    component: ComingSoon,
   },
   {
     name: "Arc",
@@ -20,21 +21,21 @@ export const apps = [
   {
     name: "Discord",
     icon: "discord.png",
-    component: <div />,
+    component: ComingSoon,
   },
   {
     name: "Code",
     icon: "vscode.png",
-    component: <div />,
+    component: ComingSoon,
   },
   {
     name: "iTerm",
     icon: "iterm.png",
-    component: <div />,
+    component: ComingSoon,
   },
   {
     name: "Notion",
     icon: "notion.png",
-    component: <div />,
+    component: ComingSoon,
   },
 ];

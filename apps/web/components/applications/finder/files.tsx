@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import Image from "next/image";
 import useFinderStore from "@stores/finder.store";
 import { Directory, fileStructure } from "@stores/file-structure";
+import { FileDirectoryIcon, IconFromPath } from "@components/image_icons";
 
 export default function Files(): JSX.Element {
   const { visitedHistory, goToDirectory, fileStructureState } =
@@ -34,12 +34,14 @@ export default function Files(): JSX.Element {
               }}
               type="button"
             >
-              <Image
-                alt="folder"
-                height={64}
-                src="/icons/folder.png"
-                width={64}
-              />
+              {typeof value.icon === "string" && (
+                <IconFromPath alt={value.name} path={value.icon} />
+              )}
+              {value instanceof Directory ? (
+                <FileDirectoryIcon />
+              ) : (
+                typeof value.icon === "function" && <value.icon />
+              )}
               <p className="text-xs text-[#9b9c9d]">{value.name}</p>
             </button>
           );
