@@ -33,6 +33,8 @@ export default function Background({ children }: BackgroundProps): JSX.Element {
     };
   }, []);
 
+  useEffect;
+
   return (
     <div
       className="fixed left-0 top-0 z-[-1] h-full w-full bg-cover bg-center bg-no-repeat"

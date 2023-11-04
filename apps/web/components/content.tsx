@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import useWindowsStore from "@stores/windows.store";
 import useSettingsStore from "@stores/settings.store";
 import { File, fileStructure } from "@components/shared/file-structure";
@@ -13,7 +12,6 @@ export default function Content({
 }: {
   path: string[] | undefined;
 }): JSX.Element {
-  const router = useRouter();
   const { windows, setGetWindowSize, addWindow } = useWindowsStore();
   const { setIsTouchDevice } = useSettingsStore();
 
@@ -28,7 +26,6 @@ export default function Content({
       if (possibleFile && possibleFile instanceof File) {
         file = possibleFile;
       } else {
-        router.push("/");
         return;
       }
     }
@@ -62,7 +59,7 @@ export default function Content({
         component: file.content,
       });
     }, 300);
-  }, [addWindow, path, router, setGetWindowSize, windows]);
+  }, [addWindow, path, setGetWindowSize, windows]);
 
   return (
     <div className="flex-1">

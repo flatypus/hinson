@@ -1,8 +1,8 @@
 "use client";
 
-import Background from "../../components/background";
-import Content from "../../components/content";
-import Dock from "../../components/dock/dock";
+import Background from "@components/background";
+import Content from "@components/content";
+import Dock from "@components/dock/dock";
 
 export default function Page({
   params,

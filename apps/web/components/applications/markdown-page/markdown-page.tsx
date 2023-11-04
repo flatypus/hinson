@@ -20,7 +20,7 @@ export default function MarkdownPage({ path }: { path: string }): JSX.Element {
   }, [path]);
 
   return (
-    <div className="markdown-body bg-markdown-github-black font-inter h-full w-full overflow-scroll p-10 text-left text-white">
+    <div className="markdown-body font-inter h-full w-full overflow-scroll bg-markdown-github-black p-10 text-left text-white">
       {!loading && (
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{file}</ReactMarkdown>
       )}

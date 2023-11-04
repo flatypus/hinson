@@ -9,6 +9,7 @@ import type { FunctionComponent } from "react";
 import type { IconProps } from "@primer/octicons-react";
 import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
+import CSSBattles from "@components/projects/cssbattles";
 import MarkdownPage from "@components/applications/markdown-page/markdown-page";
 
 export type Icon = FunctionComponent<IconProps>;
@@ -123,6 +124,11 @@ export const fileStructure = new Directory({
               name: "YouTube.md",
               icon: MarkdownIcon,
               content: <MarkdownPage path="/markdown/InProgress.md" />,
+            }),
+            new File({
+              name: "CSSBattles!",
+              icon: "/icons/cssbattles.png",
+              content: <CSSBattles />,
             }),
           ],
         }),
