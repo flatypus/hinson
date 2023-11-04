@@ -16,7 +16,6 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.7",
     "react-rnd": "^10.4.1",
-    "react-shadow-root": "^6.2.0",
     "remark-gfm": "^4.0.0",
     "zustand": "^4.4.1"
   },
