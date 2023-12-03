@@ -33,7 +33,12 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
       }}
       position={{ x: app.x, y: app.y }}
       size={{ width: app.width, height: app.height }}
-      style={{ zIndex: app.active ? 10 : 5 }}
+      style={{
+        zIndex: app.active ? 10 : 5,
+        boxShadow: "0 0 25px -4px rgba(0 0 0 / 1)",
+        overflow: "hidden",
+        borderRadius: "0.5rem",
+      }}
     >
       <div
         className={`relative h-full w-full rounded-lg border-[1px] border-[#6c6c6e] bg-apple-blur text-center text-black shadow-sm backdrop-blur-apple-blur ${
