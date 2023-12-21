@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 
 function Blobs(): JSX.Element {
@@ -22,6 +23,15 @@ function Blobs(): JSX.Element {
         }}
       />
     </div>
+  );
+}
+
+function VerticalInnerShadow(): JSX.Element {
+  return (
+    <div
+      className="pointer-events-none absolute left-0 top-0 z-10 mt-6 h-[calc(100%-20px)] w-full rotate-180"
+      style={{ boxShadow: "inset 0 20px 10px -10px rgb(1 1 1 / 0.15)" }}
+    />
   );
 }
 
@@ -58,11 +68,13 @@ function Card({
   title,
   description,
   link,
+  delay,
 }: {
   image: string;
   title: string;
   description: string;
   link: string;
+  delay?: number;
 }): JSX.Element {
   const [mouseHover, setMouseHover] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -71,94 +83,158 @@ function Card({
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <a
-      className="grid h-full w-full transform-gpu place-items-center rounded-3xl bg-white/50 p-8 ring-1 ring-gray-900/10 backdrop-blur-lg transition-transform duration-300 ease-out"
-      href={link}
-      onBlur={() => {
-        setMouseHover(false);
-      }}
-      onFocus={() => {
-        setMouseHover(true);
-      }}
-      onMouseMove={(e) => {
-        if (!mouseHover) return;
-        const rect = cardRef.current?.getBoundingClientRect();
-        if (!rect) return;
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        setMousePosition({ x, y });
-        setCardSize({
-          width: cardRef.current?.offsetWidth || 0,
-          height: cardRef.current?.offsetHeight || 0,
-        });
-      }}
-      onMouseOut={() => {
-        setMouseHover(false);
-      }}
-      onMouseOver={() => {
-        setMouseHover(true);
-      }}
-      ref={cardRef}
-      style={{
-        transform: mouseHover
-          ? `perspective(1000px) rotateX(${
-              (mousePosition.y / cardSize.height) * -(SCALE * 2) + SCALE
-            }deg) rotateY(${
-              (mousePosition.x / cardSize.width) * (SCALE * 2) - SCALE
-            }deg) translateZ(10px)`
-          : "perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
-      }}
-    >
-      <Image
-        alt={`${title}-image`}
-        className="rounded-xl"
-        height={48}
-        src={image}
-        width={48}
+    <AnimationDelay delay={delay || 0}>
+      <a
+        className="grid h-full w-full transform-gpu place-items-center rounded-3xl bg-white/50 p-8 ring-1 ring-gray-900/10 backdrop-blur-lg transition-all duration-500 ease-out hover:bg-white/70"
+        href={link}
+        onBlur={() => {
+          setMouseHover(false);
+        }}
+        onFocus={() => {
+          setMouseHover(true);
+        }}
+        onMouseMove={(e) => {
+          if (!mouseHover) return;
+          const rect = cardRef.current?.getBoundingClientRect();
+          if (!rect) return;
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          setMousePosition({ x, y });
+          setCardSize({
+            width: cardRef.current?.offsetWidth || 0,
+            height: cardRef.current?.offsetHeight || 0,
+          });
+        }}
+        onMouseOut={() => {
+          setMouseHover(false);
+        }}
+        onMouseOver={() => {
+          setMouseHover(true);
+        }}
+        ref={cardRef}
+        style={{
+          transform: mouseHover
+            ? `perspective(1000px) rotateX(${
+                (mousePosition.y / cardSize.height) * -(SCALE * 2) + SCALE
+              }deg) rotateY(${
+                (mousePosition.x / cardSize.width) * (SCALE * 2) - SCALE
+              }deg) translateZ(10px)`
+            : "perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
+        }}
+      >
+        <Image
+          alt={`${title}-image`}
+          className="rounded-xl"
+          height={48}
+          src={image}
+          width={48}
+        />
+        <div className="mt-4">
+          <h3 className="text-lg font-bold">{title}</h3>
+          <p className="mt-2 text-sm text-gray-600">{description}</p>
+        </div>
+      </a>
+    </AnimationDelay>
+  );
+}
+
+function Cards(): JSX.Element {
+  return (
+    <div className="my-8 grid w-full grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+      <Card
+        delay={400}
+        description="Lead full-stack developer for UN accredited edtech startup, building an AI-driven learning platform"
+        image="/images/edubeyond.png"
+        link="https://edubeyond.org/"
+        title="EduBeyond"
       />
-      <div className="mt-4">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <p className="mt-2 text-sm text-gray-600">{description}</p>
-      </div>
-    </a>
+
+      <Card
+        delay={500}
+        description="Channel for engineering and history videos about random projects. We're at 1,200 subscribers and 120k views!"
+        image="/images/flatypus.png"
+        link="https://youtube.com/flatypus"
+        title="YouTube"
+      />
+
+      <Card
+        delay={600}
+        description="Developer-focused python library for building self-prompting agents. 3,000+ downloads!"
+        image="/images/github.png"
+        link="https://github.com/flatypus/flowchat"
+        title="flowchat"
+      />
+
+      <Card
+        delay={700}
+        description="Personal website designed around my MacOS workstation. You're on it right now!"
+        image="/images/github.png"
+        link="https://github.com/flatypus/portfolio"
+        title="Personal Site"
+      />
+    </div>
   );
 }
 
 export default function Welcome(): JSX.Element {
   return (
-    <div className="h-full w-full overflow-hidden bg-white">
+    <div className="h-full w-full overflow-y-scroll bg-white">
+      <VerticalInnerShadow />
       <Blobs />
+
       <div className="flex h-full items-center justify-center">
-        <div className="grid h-full w-full max-w-[500px] place-items-center overflow-y-scroll p-2 md:max-w-[800px]">
-          <div className="px-8 md:px-16">
+        <div className="grid h-full w-full max-w-[500px] place-items-center p-2 md:max-w-[800px]">
+          <div className="p-8 md:p-16">
             <AnimationDelay
-              className="text-left text-2xl font-bold md:text-4xl"
+              className="flex flex-row justify-between text-left text-2xl font-bold md:text-4xl"
               delay={200}
             >
-              Hi, I&apos;m Hinson.
+              <h1>Hi, I&apos;m Hinson.</h1>
+              <span className="mt-[10px] flex flex-row gap-x-[2px]">
+                <AnimationDelay delay={300}>
+                  <a href="https://github.com/flatypus">
+                    <FaGithub
+                      className="hover-scale-large mt-[2.6px] cursor-pointer"
+                      color="black"
+                      opacity={0.8}
+                      size={19}
+                    />
+                  </a>
+                </AnimationDelay>
+
+                <AnimationDelay delay={400}>
+                  <a href="https://linkedin.com/in/hinson-chan">
+                    <FaLinkedin
+                      className="hover-scale-large mt-[2.7px] cursor-pointer"
+                      color="#0077b5"
+                      opacity={0.8}
+                      size={20}
+                    />
+                  </a>
+                </AnimationDelay>
+
+                <AnimationDelay delay={500}>
+                  <a href="https://youtube.com/flatypus">
+                    <FaYoutube
+                      className="hover-scale-large cursor-pointer"
+                      color="red"
+                      opacity={0.8}
+                      size={26}
+                    />
+                  </a>
+                </AnimationDelay>
+              </span>
             </AnimationDelay>
+
             <AnimationDelay
               className="mt-4 text-left text-sm font-light text-gray-600 md:text-xl"
               delay={300}
             >
               Full Stack Developer, AI Researcher, Bubble Tea Enthusiast
             </AnimationDelay>
-            <AnimationDelay className="mt-8" delay={400}>
-              <div className="grid w-full grid-cols-1 place-items-center gap-8 md:grid-cols-2">
-                <Card
-                  description="Lead full-stack developer for UN accredited edtech startup, building an AI-driven learning platform"
-                  image="/images/edubeyond.png"
-                  link="https://edubeyond.org/"
-                  title="EduBeyond"
-                />
-                <Card
-                  description="Channel for engineering and history videos about random projects. We're at 1,200 subscribers and 120k views!"
-                  image="/images/flatypus.png"
-                  link="https://youtube.com/flatypus"
-                  title="YouTube"
-                />
-              </div>
-            </AnimationDelay>
+
+            <Cards />
+            <footer>Made with ❤️ by Hinson with Nextjs and TailwindCSS</footer>
           </div>
         </div>
       </div>

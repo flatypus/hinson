@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
   
+@layer components {
+  .hover-scale-small {
+    @apply transform hover:scale-[102%] transition-transform ease-in-out;
+  }
+  .hover-scale-large {
+    @apply transform hover:scale-[105%] transition-transform ease-in-out;
+  }
+}
+
 @font-face {
   font-family: "San Francisco";
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
