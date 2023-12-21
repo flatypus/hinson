@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 
 const HOUR = 60 * 60 * 1000;
 const WALLPAPERS = {
-  night: "/wallpapers/night.jpg",
-  sunrise: "/wallpapers/sunrise.jpg",
-  day: "/wallpapers/day.jpg",
-  sunset: "/wallpapers/sunrise.jpg",
+  night: "/wallpapers/night.webp",
+  sunrise: "/wallpapers/sunrise.webp",
+  day: "/wallpapers/day.webp",
+  sunset: "/wallpapers/sunrise.webp",
 };
 
 const wallpaperByHour = (): string => {

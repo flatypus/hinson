@@ -16,6 +16,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
+      <head>
+        <link href="https://applesocial.s3.amazonaws.com" rel="preconnect" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

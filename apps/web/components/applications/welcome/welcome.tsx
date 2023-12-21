@@ -234,7 +234,9 @@ export default function Welcome(): JSX.Element {
             </AnimationDelay>
 
             <Cards />
-            <footer>Made with ❤️ by Hinson with Nextjs and TailwindCSS</footer>
+            <footer className="text-sm">
+              Made with ❤️ by Hinson with Nextjs and TailwindCSS
+            </footer>
           </div>
         </div>
       </div>

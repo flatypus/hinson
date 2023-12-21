@@ -119,17 +119,17 @@ export class Window {
     const newHeight = (innerHeight * 5) / 6;
 
     let x;
-    if (innerWidth - newWidth < 100) {
+    if (innerWidth - newWidth < 60) {
       x = (innerWidth - newWidth) / 2;
     } else {
-      x = Math.random() * (innerWidth - newWidth - 100) + 50;
+      x = Math.random() * (innerWidth - newWidth - 60) + 30;
     }
 
     let y;
-    if (innerHeight - newHeight < 100) {
+    if (innerHeight - newHeight < 60) {
       y = (innerHeight - newHeight) / 2;
     } else {
-      y = Math.random() * (innerHeight - newHeight - 100) + 50;
+      y = Math.random() * (innerHeight - newHeight - 60) + 30;
     }
 
     this.setTransform(x, y, newWidth, newHeight);
