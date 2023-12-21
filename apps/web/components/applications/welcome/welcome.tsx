@@ -83,7 +83,7 @@ function Card({
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <AnimationDelay delay={delay || 0}>
+    <AnimationDelay className="h-full w-full" delay={delay || 0}>
       <a
         className="grid h-full w-full transform-gpu place-items-center rounded-3xl bg-white/50 p-8 ring-1 ring-gray-900/10 backdrop-blur-lg transition-all duration-500 ease-out hover:bg-white/70"
         href={link}
@@ -112,6 +112,7 @@ function Card({
           setMouseHover(true);
         }}
         ref={cardRef}
+        rel="noopener"
         style={{
           transform: mouseHover
             ? `perspective(1000px) rotateX(${
@@ -121,6 +122,7 @@ function Card({
               }deg) translateZ(10px)`
             : "perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
         }}
+        target="_blank"
       >
         <Image
           alt={`${title}-image`}
@@ -180,7 +182,7 @@ function Icons(): JSX.Element {
   return (
     <span className="mt-[5px] flex flex-row gap-x-[2px] md:mt-[10px]">
       <AnimationDelay delay={300}>
-        <a href="https://github.com/flatypus">
+        <a href="https://github.com/flatypus" rel="noopener" target="_blank">
           <FaGithub
             className="hover-scale-large mt-[2.6px] cursor-pointer"
             color="black"
@@ -191,7 +193,11 @@ function Icons(): JSX.Element {
       </AnimationDelay>
 
       <AnimationDelay delay={400}>
-        <a href="https://linkedin.com/in/hinson-chan">
+        <a
+          href="https://linkedin.com/in/hinson-chan"
+          rel="noopener"
+          target="_blank"
+        >
           <FaLinkedin
             className="hover-scale-large mt-[2.7px] cursor-pointer"
             color="#0077b5"
@@ -202,7 +208,7 @@ function Icons(): JSX.Element {
       </AnimationDelay>
 
       <AnimationDelay delay={500}>
-        <a href="https://youtube.com/flatypus">
+        <a href="https://youtube.com/flatypus" rel="noopener" target="_blank">
           <FaYoutube
             className="hover-scale-large cursor-pointer"
             color="red"
@@ -241,7 +247,7 @@ export default function Welcome(): JSX.Element {
             </AnimationDelay>
 
             <Cards />
-            <footer className="text-sm">
+            <footer className="text-sm text-black text-opacity-80">
               Made with ❤️ by Hinson with Nextjs and TailwindCSS
             </footer>
           </div>
