@@ -20,7 +20,7 @@ export default function Content({
   }, [setIsTouchDevice]);
 
   useEffect(() => {
-    let file = fileStructure.traverse(["hinson", "Welcome", "Welcome!"]);
+    let file = fileStructure.traverse(["hinson", "Applications", "Arc"]);
     if (path && path.length > 0) {
       const possibleFile = fileStructure.traverse(path);
       if (possibleFile && possibleFile instanceof File) {

@@ -31,7 +31,7 @@ const useWindowsStore = create<WindowState>((set, get) => {
 
     const findExisting = windows.find((window) => window.name === name);
     if (findExisting) {
-      findExisting.window();
+      findExisting.fullscreen();
       return;
     }
 
@@ -46,7 +46,7 @@ const useWindowsStore = create<WindowState>((set, get) => {
     window.hide(false);
     windows.push(window);
     set({ windows });
-    window.window();
+    window.fullscreen();
   };
 
   return {
