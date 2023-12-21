@@ -20,7 +20,7 @@ export default function Content({
   }, [setIsTouchDevice]);
 
   useEffect(() => {
-    let file = fileStructure.traverse(["hinson", "Welcome", "Welcome!.md"]);
+    let file = fileStructure.traverse(["hinson", "Welcome", "Welcome!"]);
     if (path && path.length > 0) {
       const possibleFile = fileStructure.traverse(path);
       if (possibleFile && possibleFile instanceof File) {
@@ -29,8 +29,6 @@ export default function Content({
         return;
       }
     }
-
-    // reset route
 
     const getWindowSize = (): {
       width: number;
@@ -47,18 +45,13 @@ export default function Content({
       app.hide(false);
     });
 
-    const finder = windows.find((app) => app.name === "Finder");
-    if (!finder) return;
-    finder.window();
+    if (!file || !(file instanceof File) || !file.content) return;
 
-    setTimeout(() => {
-      if (!file || !(file instanceof File) || !file.content) return;
-      addWindow({
-        name: file.name,
-        icon: file.icon,
-        component: file.content,
-      });
-    }, 300);
+    addWindow({
+      name: file.name,
+      icon: file.icon,
+      component: file.content,
+    });
   }, [addWindow, path, setGetWindowSize, windows]);
 
   return (

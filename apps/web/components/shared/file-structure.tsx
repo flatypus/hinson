@@ -11,6 +11,7 @@ import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
 import CSSBattles from "@components/projects/cssbattles";
 import MarkdownPage from "@components/applications/markdown-page/markdown-page";
+import Welcome from "@components/applications/welcome/welcome";
 
 export type Icon = FunctionComponent<IconProps>;
 
@@ -95,14 +96,9 @@ export const fileStructure = new Directory({
           icon: HomeIcon,
           children: [
             new File({
-              name: "Welcome!.md",
-              icon: MarkdownIcon,
-              content: <MarkdownPage path="/markdown/Welcome!.md" />,
-            }),
-            new File({
-              name: "AboutMe.md",
-              icon: MarkdownIcon,
-              content: <MarkdownPage path="/markdown/About.md" />,
+              name: "Welcome!",
+              icon: "/icons/profile.png",
+              content: <Welcome />,
             }),
             new File({
               name: "Credits.md",

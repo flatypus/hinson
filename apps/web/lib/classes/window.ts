@@ -1,5 +1,5 @@
+import type { Icon } from "@components/shared/file-structure";
 import type { WindowMode } from "@lib/types";
-import type { Icon } from "../../components/shared/file-structure";
 
 interface WindowConstructor {
   name: string;
@@ -115,15 +115,24 @@ export class Window {
   private randomWindowTransform(): void {
     const { width: innerWidth, height: innerHeight } = this.getWindowSize();
 
-    const newWidth = (innerWidth * 3) / 4;
-    const newHeight = (innerHeight * 3) / 4;
+    const newWidth = (innerWidth * 5) / 6;
+    const newHeight = (innerHeight * 5) / 6;
 
-    this.setTransform(
-      Math.floor(Math.random() * (innerWidth - newWidth)),
-      Math.floor(Math.random() * (innerHeight - newHeight)),
-      newWidth,
-      newHeight,
-    );
+    let x;
+    if (innerWidth - newWidth < 100) {
+      x = (innerWidth - newWidth) / 2;
+    } else {
+      x = Math.random() * (innerWidth - newWidth - 100) + 50;
+    }
+
+    let y;
+    if (innerHeight - newHeight < 100) {
+      y = (innerHeight - newHeight) / 2;
+    } else {
+      y = Math.random() * (innerHeight - newHeight - 100) + 50;
+    }
+
+    this.setTransform(x, y, newWidth, newHeight);
   }
 
   injectGetSize(getWindowSize: () => { width: number; height: number }): void {
