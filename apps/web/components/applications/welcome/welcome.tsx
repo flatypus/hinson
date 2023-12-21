@@ -176,6 +176,45 @@ function Cards(): JSX.Element {
   );
 }
 
+function Icons(): JSX.Element {
+  return (
+    <span className="mt-[5px] flex flex-row gap-x-[2px] md:mt-[10px]">
+      <AnimationDelay delay={300}>
+        <a href="https://github.com/flatypus">
+          <FaGithub
+            className="hover-scale-large mt-[2.6px] cursor-pointer"
+            color="black"
+            opacity={0.8}
+            size={19}
+          />
+        </a>
+      </AnimationDelay>
+
+      <AnimationDelay delay={400}>
+        <a href="https://linkedin.com/in/hinson-chan">
+          <FaLinkedin
+            className="hover-scale-large mt-[2.7px] cursor-pointer"
+            color="#0077b5"
+            opacity={0.8}
+            size={20}
+          />
+        </a>
+      </AnimationDelay>
+
+      <AnimationDelay delay={500}>
+        <a href="https://youtube.com/flatypus">
+          <FaYoutube
+            className="hover-scale-large cursor-pointer"
+            color="red"
+            opacity={0.8}
+            size={26}
+          />
+        </a>
+      </AnimationDelay>
+    </span>
+  );
+}
+
 export default function Welcome(): JSX.Element {
   return (
     <div className="h-full w-full overflow-y-scroll bg-white">
@@ -190,40 +229,8 @@ export default function Welcome(): JSX.Element {
               delay={200}
             >
               <h1>Hi, I&apos;m Hinson.</h1>
-              <span className="mt-[10px] flex flex-row gap-x-[2px]">
-                <AnimationDelay delay={300}>
-                  <a href="https://github.com/flatypus">
-                    <FaGithub
-                      className="hover-scale-large mt-[2.6px] cursor-pointer"
-                      color="black"
-                      opacity={0.8}
-                      size={19}
-                    />
-                  </a>
-                </AnimationDelay>
 
-                <AnimationDelay delay={400}>
-                  <a href="https://linkedin.com/in/hinson-chan">
-                    <FaLinkedin
-                      className="hover-scale-large mt-[2.7px] cursor-pointer"
-                      color="#0077b5"
-                      opacity={0.8}
-                      size={20}
-                    />
-                  </a>
-                </AnimationDelay>
-
-                <AnimationDelay delay={500}>
-                  <a href="https://youtube.com/flatypus">
-                    <FaYoutube
-                      className="hover-scale-large cursor-pointer"
-                      color="red"
-                      opacity={0.8}
-                      size={26}
-                    />
-                  </a>
-                </AnimationDelay>
-              </span>
+              <Icons />
             </AnimationDelay>
 
             <AnimationDelay
