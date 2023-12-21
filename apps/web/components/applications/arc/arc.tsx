@@ -1,5 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Welcome from "../welcome/welcome";
+import GrainyGradient from "./grainy-gradient";
+import Input from "./input";
+import Pinned from "./pinned";
 
 type Tab = {
   name: string;
@@ -7,22 +10,7 @@ type Tab = {
   element?: () => JSX.Element;
 }[];
 
-function GrainyGradient({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
-  return (
-    <div className="h-full w-full bg-gradient-to-br from-purple-500 to-blue-600">
-      <div className="grainy-gradient flex h-full w-full flex-row">
-        {children}
-      </div>
-    </div>
-  );
-}
-
 export default function Arc(): JSX.Element {
-  const inputRef = useRef<HTMLInputElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- temp
   const [selectedTab, setSelectedTab] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- temp
@@ -38,34 +26,15 @@ export default function Arc(): JSX.Element {
   return (
     <GrainyGradient>
       <div className="flex w-full flex-row gap-3 p-3">
-        <div className="text-xs">
-          <input
-            className="rounded-lg border-none bg-[#ffffff31] p-2 text-black text-opacity-70 outline-none"
-            defaultValue={shortenedName}
-            onBlur={(event) => {
-              event.preventDefault();
-              if (!inputRef.current) return;
-              inputRef.current.value = shortenedName;
-            }}
-            onFocus={(event) => {
-              event.preventDefault();
-              if (!inputRef.current) return;
-              inputRef.current.value = tabs[selectedTab].url;
-              inputRef.current.select();
-            }}
-            onKeyDown={(event) => {
-              const search = event.currentTarget.value;
-              if (event.key === "Enter" && search) {
-                if (search.startsWith("http")) {
-                  window.open(event.currentTarget.value, "_blank");
-                } else {
-                  window.open(`https://www.google.com/search?q=${search}`);
-                }
-              }
-            }}
-            ref={inputRef}
-            type="text"
+        <div className="flex w-1/5 flex-col gap-2 text-xs lg:w-1/6">
+          <Input
+            currentURL={tabs[selectedTab].url}
+            shortenedName={shortenedName}
           />
+          <Pinned />
+          <h3 className="text-left text-[10px] font-semibold text-black text-opacity-50">
+            DIRECTORY
+          </h3>
         </div>
         <div className="relative flex h-full w-full flex-col gap-1">
           <div className="h-full w-full overflow-hidden rounded-lg bg-white shadow-lg shadow-gray-600">
