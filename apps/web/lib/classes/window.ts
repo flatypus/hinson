@@ -68,10 +68,11 @@ export class Window {
     y?: number;
     width?: number;
     height?: number;
-  }): void {
+  }): () => void {
     const fps = this.defaultFps;
     const time = this.defaultTime;
     const frames = fps * (time / 1000);
+
     const start = {
       x: this.x,
       y: this.y,
@@ -79,37 +80,50 @@ export class Window {
       height: this.height,
     };
 
+    const requiredTarget = {
+      x: target.x ?? this.x,
+      y: target.y ?? this.y,
+      width: target.width ?? this.width,
+      height: target.height ?? this.height,
+    };
+
+    const toCancel: number[] = [];
+
+    const values: { x: number; y: number; width: number; height: number }[] =
+      [];
+
+    for (let frame = 0; frame < frames; frame++) {
+      const ease = (-Math.cos(Math.PI * (frame / frames)) + 1) / 2;
+      values.push({
+        x: start.x + (requiredTarget.x - start.x) * ease,
+        y: start.y + (requiredTarget.y - start.y) * ease,
+        width: start.width + (requiredTarget.width - start.width) * ease,
+        height: start.height + (requiredTarget.height - start.height) * ease,
+      });
+    }
+
     let frame = 0;
+
     const animateFrame = (): void => {
-      const ease = (t: number): number => {
-        return (-Math.cos(Math.PI * t) + 1) / 2;
-      };
-
-      if (target.x !== undefined) {
-        this.x = start.x + (target.x - start.x) * ease(frame / frames);
-      }
-
-      if (target.y !== undefined) {
-        this.y = start.y + (target.y - start.y) * ease(frame / frames);
-      }
-
-      if (target.width !== undefined) {
-        this.width =
-          start.width + (target.width - start.width) * ease(frame / frames);
-      }
-
-      if (target.height !== undefined) {
-        this.height =
-          start.height + (target.height - start.height) * ease(frame / frames);
-      }
-
+      this.x = values[frame].x;
+      this.y = values[frame].y;
+      this.width = values[frame].width;
+      this.height = values[frame].height;
+      frame += 1;
       this.refreshWindows();
-      frame++;
+
       if (frame < frames) {
-        requestAnimationFrame(animateFrame);
+        toCancel.push(requestAnimationFrame(animateFrame));
       }
     };
-    requestAnimationFrame(animateFrame);
+
+    toCancel.push(requestAnimationFrame(animateFrame));
+
+    return () => {
+      toCancel.forEach((cancelHandle) => {
+        cancelAnimationFrame(cancelHandle);
+      });
+    };
   }
 
   private randomWindowTransform(): void {

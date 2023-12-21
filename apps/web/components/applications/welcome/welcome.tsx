@@ -79,7 +79,8 @@ function Card({
   const [mouseHover, setMouseHover] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cardSize, setCardSize] = useState({ width: 0, height: 0 });
-  const SCALE = 8;
+  const SCALE_X = 8;
+  const SCALE_Y = 16;
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   return (
@@ -116,9 +117,9 @@ function Card({
         style={{
           transform: mouseHover
             ? `perspective(1000px) rotateX(${
-                (mousePosition.y / cardSize.height) * -(SCALE * 2) + SCALE
+                (mousePosition.y / cardSize.height) * -(SCALE_Y * 2) + SCALE_Y
               }deg) rotateY(${
-                (mousePosition.x / cardSize.width) * (SCALE * 2) - SCALE
+                (mousePosition.x / cardSize.width) * (SCALE_X * 2) - SCALE_X
               }deg) translateZ(10px)`
             : "perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
         }}
@@ -247,7 +248,7 @@ export default function Welcome(): JSX.Element {
             </AnimationDelay>
 
             <Cards />
-            <footer className="text-sm text-black text-opacity-80">
+            <footer className="text-sm text-black text-opacity-90">
               Made with ❤️ by Hinson with Nextjs and TailwindCSS
             </footer>
           </div>
