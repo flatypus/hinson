@@ -25,7 +25,7 @@ export class Window {
   docked: boolean;
 
   private defaultFps = 180;
-  private defaultTime = 100;
+  private defaultTime = 140;
   private getWindows: () => Window[];
   private refreshWindows: () => void;
   private getWindowSize = (): { width: number; height: number } => {
