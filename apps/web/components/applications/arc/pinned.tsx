@@ -15,7 +15,7 @@ const GMAP_LOCATIONS = [
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=-6.1719404,106.912235&heading=65&pitch=14&fov=100`,
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=25.048856,121.7873947&heading=334.54&pitch=10&fov=100`,
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=25.0430079,121.7768444&heading=44.09&pitch=10&fov=100`,
-  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=34.6887875,135.5248521&heading=310.24567&pitch=0&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=34.6887875,135.5248521&heading=150&pitch=0&fov=100`,
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=-6.7266351,106.9555225&heading=20.82&pitch=10&fov=100`,
 ];
 
@@ -34,6 +34,46 @@ const GMAPS_MEANINGS = [
   "Taman Safari, Bogor, Indonesia - A beautiful day off from work last summer",
 ];
 
+const pinned = [
+  {
+    icon: "flatypus",
+  },
+  {
+    icon: "gmail",
+    url: "https://mail.google.com",
+  },
+  {
+    icon: "gcal",
+    url: "https://calendar.google.com",
+  },
+  {
+    icon: "crd",
+    url: "https://remotedesktop.google.com",
+  },
+  {
+    icon: "github",
+    url: "https://github.com/flatypus",
+  },
+  {
+    icon: "music",
+    url: "https://music.youtube.com",
+  },
+  {
+    icon: "maps",
+    size: 10,
+  },
+
+  {
+    icon: "youtube",
+    url: "https://youtube.com/flatypus",
+  },
+  {
+    icon: "deepl",
+    url: "https://deepl.com",
+    size: 12,
+  },
+];
+
 export default function Pinned({
   setSelectedTab,
   setTabs,
@@ -43,49 +83,10 @@ export default function Pinned({
   setTabs: (tabs: Tab[]) => void;
   tabs: Tab[];
 }): JSX.Element {
-  const pinned = [
-    {
-      icon: "flatypus",
-    },
-    {
-      icon: "gmail",
-      url: "https://mail.google.com",
-    },
-    {
-      icon: "gcal",
-      url: "https://calendar.google.com",
-    },
-    {
-      icon: "crd",
-      url: "https://remotedesktop.google.com",
-    },
-    {
-      icon: "github",
-      url: "https://github.com/flatypus",
-    },
-    {
-      icon: "music",
-      url: "https://music.youtube.com",
-    },
-    {
-      icon: "maps",
-      size: 10,
-    },
-
-    {
-      icon: "youtube",
-      url: "https://youtube.com/flatypus",
-    },
-    {
-      icon: "deepl",
-      url: "https://deepl.com",
-      size: 12,
-    },
-  ];
-
   return (
     <div className="grid grid-cols-3 gap-2">
       {pinned.map(({ icon, url, size }) => {
+        const key = (new Date().getTime() + Math.random()).toString();
         const Icon = (
           <Image
             alt={icon}
@@ -106,6 +107,7 @@ export default function Pinned({
               element: Welcome,
               url: "https://flatypus.me",
               icon: "/images/flatypus.png",
+              key,
             };
           } else {
             const random = Math.floor(Math.random() * GMAP_LOCATIONS.length);
@@ -113,6 +115,7 @@ export default function Pinned({
               name: GMAPS_MEANINGS[random],
               url: GMAP_LOCATIONS[random],
               icon: "/icons/maps.png",
+              key,
             };
           }
 

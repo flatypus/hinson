@@ -14,7 +14,8 @@ const innerElems = (
   selectedTab: number,
   setSelectedTab: (index: number) => void,
   tabs: Tab[],
-  setTabs: (tabs: Tab[]) => void,
+  setTabs: ((tabs: Tab[]) => void) &
+    ((tabs: ((tabs: Tab[]) => Tab[]) | Tab[]) => void),
   shortenedName: string,
 ): JSX.Element => (
   <>
@@ -23,15 +24,15 @@ const innerElems = (
     <h3 className="text-left font-semibold text-black text-opacity-50">
       DIRECTORY
     </h3>
-    <div className="flex flex-col gap-1">
+    <div className="flex h-full flex-col gap-1 overflow-y-scroll">
       {tabs.map((tab, index) => (
         <button
           className={`relative flex cursor-default items-center justify-start gap-2 rounded-md p-2 ${
             index === selectedTab
               ? "bg-white bg-opacity-80"
-              : "bg-gray-300 hover:bg-opacity-60"
+              : "bg-transparent hover:bg-white hover:bg-opacity-10"
           }`}
-          key={tab.name}
+          key={tab.key}
           onClick={() => {
             setSelectedTab(index);
           }}
@@ -54,26 +55,24 @@ const innerElems = (
               defaultValue={tab.name}
               onBlur={(event) => {
                 event.preventDefault();
-                const newTabs = [...tabs];
-                newTabs[index].name = event.currentTarget.value;
-                setTabs(newTabs);
               }}
               type="text"
             />
           )}
           <div className="absolute right-1 top-[50%] -translate-y-1/2 transform">
-            <button
-              className="rounded-lg px-[2px] pt-[2px] hover:bg-black hover:bg-opacity-5"
-              onClick={() => {
-                const newTabs = [...tabs];
-                newTabs.splice(index, 1);
-                setTabs(newTabs);
-                setSelectedTab(Math.min(index, newTabs.length - 1));
-              }}
-              type="button"
-            >
-              <XIcon />
-            </button>
+            {
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- delete button
+              <div
+                className="rounded-lg px-[2px] pt-[2px] hover:bg-black hover:bg-opacity-5"
+                onClick={() => {
+                  const newTabs = [...tabs];
+                  newTabs.splice(index, 1);
+                  setTabs(newTabs);
+                }}
+              >
+                <XIcon />
+              </div>
+            }
           </div>
         </button>
       ))}
@@ -100,6 +99,7 @@ export default function Arc(): JSX.Element {
       element: Welcome,
       url: "https://flatypus.me",
       icon: "/images/flatypus.png",
+      key: new Date().getTime().toString(),
     },
   ]);
 
@@ -169,22 +169,26 @@ export default function Arc(): JSX.Element {
               <div className="h-full w-full overflow-hidden rounded-lg shadow-lg shadow-gray-600">
                 {tabs.length > 0 ? (
                   <div className="relative h-full w-full">
-                    {tabs.map((tab, index) =>
-                      tab.element ? (
-                        <tab.element key={tab.name} />
-                      ) : (
-                        <iframe
-                          className={`h-full w-full ${
-                            index === selectedTab
-                              ? "z-10 opacity-100"
-                              : "z-0 opacity-0"
-                          } absolute left-0 top-0 overflow-hidden`}
-                          key={tab.name}
-                          src={tab.url}
-                          title={tab.name}
-                        />
-                      ),
-                    )}
+                    {tabs.map((tab, index) => (
+                      <div
+                        className={`h-full w-full ${
+                          index === selectedTab
+                            ? "z-10 opacity-100"
+                            : "z-0 opacity-0"
+                        } absolute left-0 top-0 overflow-hidden`}
+                        key={tab.key}
+                      >
+                        {tab.element ? (
+                          <tab.element />
+                        ) : (
+                          <iframe
+                            className="h-full w-full"
+                            src={tab.url}
+                            title={tab.name}
+                          />
+                        )}
+                      </div>
+                    ))}
                   </div>
                 ) : null}
               </div>

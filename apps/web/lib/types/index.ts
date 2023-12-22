@@ -9,5 +9,6 @@ export interface Tab {
   icon: string;
   name: string;
   url: string;
+  key: string;
   element?: () => JSX.Element;
 }

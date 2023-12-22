@@ -43,7 +43,7 @@ export function Sidebar({
 }): JSX.Element {
   return (
     <div
-      className={`flex w-1/5 flex-col gap-y-2 text-[12px] transition-all duration-300 ${
+      className={`flex h-full w-1/5 flex-col gap-y-2 text-[12px] transition-all duration-300 ${
         small ? "-translate-x-[120%] overflow-hidden" : "mr-3 w-full"
       }`}
     >
