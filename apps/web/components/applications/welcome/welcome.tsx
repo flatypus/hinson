@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
+import { WindowContext } from "@stores/window.context";
 
 function Blobs(): JSX.Element {
   return (
@@ -142,8 +143,22 @@ function Card({
 }
 
 function Cards(): JSX.Element {
+  const { subscribe } = useContext(WindowContext);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const { width: lastWidth } = subscribe((window) => {
+      setWidth(window.width);
+    });
+    setWidth(lastWidth);
+  }, [subscribe]);
+
   return (
-    <div className="my-8 grid w-full grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+    <div
+      className={`my-8 grid w-full grid-cols-1 place-items-center gap-4 ${
+        width > 800 ? "md:grid-cols-2" : "md:grid-cols-1"
+      }`}
+    >
       <Card
         delay={400}
         description="Lead full-stack developer for UN accredited edtech startup, building an AI-driven learning platform"

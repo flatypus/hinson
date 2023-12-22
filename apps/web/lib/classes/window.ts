@@ -12,6 +12,13 @@ interface WindowConstructor {
   docked?: boolean;
 }
 
+interface Dimensions {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+}
+
 export class Window {
   name: string;
   icon: Icon | string;
@@ -25,9 +32,10 @@ export class Window {
   docked: boolean;
 
   private defaultFps = 180;
-  private defaultTime = 140;
+  private defaultTime = 100;
   private getWindows: () => Window[];
   private refreshWindows: () => void;
+  private dimensionSubscribers: ((dimensions: Dimensions) => void)[] = [];
   private getWindowSize = (): { width: number; height: number } => {
     return { width: 0, height: 0 };
   };
@@ -153,6 +161,17 @@ export class Window {
     this.getWindowSize = getWindowSize;
   }
 
+  subscribe: (callback: (dimensions: Dimensions) => void) => Dimensions = (
+    callback,
+  ) => {
+    this.dimensionSubscribers.push(callback);
+    return {
+      x: this.x,
+      y: this.y,
+      ...this.getWindowSize(),
+    };
+  };
+
   setTransform(
     x: number,
     y: number,
@@ -174,6 +193,9 @@ export class Window {
       this.height = height;
       this.refreshWindows();
     }
+    this.dimensionSubscribers.forEach((callback) => {
+      callback({ width, height, x, y });
+    });
   }
 
   hide(animate = true): void {
@@ -194,7 +216,7 @@ export class Window {
     this.focusAnotherWindow();
     setTimeout(() => {
       this.setMode("minimized");
-    }, 200);
+    }, this.defaultTime);
   }
 
   close(): void {
@@ -202,7 +224,7 @@ export class Window {
     this.focusAnotherWindow();
     setTimeout(() => {
       this.setMode("closed");
-    }, 200);
+    }, this.defaultTime);
   }
 
   window(): void {

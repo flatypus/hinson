@@ -26,13 +26,13 @@ export default function Arc(): JSX.Element {
   return (
     <GrainyGradient>
       <div className="flex w-full flex-row gap-3 p-3">
-        <div className="flex w-1/5 flex-col gap-2 text-xs lg:w-1/6">
+        <div className="flex w-1/5 flex-col gap-2 text-[10px] lg:w-1/6">
           <Input
             currentURL={tabs[selectedTab].url}
             shortenedName={shortenedName}
           />
           <Pinned />
-          <h3 className="text-left text-[10px] font-semibold text-black text-opacity-50">
+          <h3 className="text-left font-semibold text-black text-opacity-50">
             DIRECTORY
           </h3>
         </div>

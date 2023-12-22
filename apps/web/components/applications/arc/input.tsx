@@ -10,7 +10,7 @@ export default function Input({
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <input
-      className="w-full rounded-lg border-none bg-black bg-opacity-5 p-2 text-black text-opacity-70 outline-none hover:bg-opacity-10"
+      className="w-full rounded-lg border-none bg-black bg-opacity-5 p-2 text-black text-opacity-50 outline-none hover:bg-opacity-10"
       defaultValue={shortenedName}
       onBlur={(event) => {
         event.preventDefault();
