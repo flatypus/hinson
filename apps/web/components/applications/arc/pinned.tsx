@@ -10,6 +10,13 @@ const GMAP_LOCATIONS = [
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=34.9670327,135.785515&heading=0&pitch=10&fov=100`,
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=35.1690891,136.8805778&heading=200&pitch=10&fov=100`,
   `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=35.7042862,139.7952404&heading=70&pitch=0&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=49.2793936,-123.1167462&heading=75&pitch=20&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=51.4788251,-112.7902766&heading=0&pitch=-20&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=-6.1719404,106.912235&heading=65&pitch=14&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=25.048856,121.7873947&heading=334.54&pitch=10&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=25.0430079,121.7768444&heading=44.09&pitch=10&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=34.6887875,135.5248521&heading=310.24567&pitch=0&fov=100`,
+  `https://www.google.com/maps/embed/v1/streetview?key=${API_KEY}&location=-6.7266351,106.9555225&heading=20.82&pitch=10&fov=100`,
 ];
 
 const GMAPS_MEANINGS = [
@@ -18,6 +25,13 @@ const GMAPS_MEANINGS = [
   "Fushimi Inari Shrine, Japan",
   "The One Day We Took The 新幹線 From Tokyo-Nagoya For A 7/11 Run",
   "View of Skytree from Asakusa - Japan 2023",
+  "Vancouver Public Library, Central Branch - host to countless study sessions",
+  "The Royal Tyrell Museum, Drumheller, Alberta",
+  "Tangan Pengharapan, the Indonesian Charity we partnered with last summer",
+  "Shifen Waterfall, Taiwan - A trip with my parents",
+  "Shifen Old Street, Taiwan - A trip with my parents",
+  "Exploring the beautiful Osaka Castle - Japan 2023",
+  "Taman Safari, Bogor, Indonesia - A beautiful day off from work last summer",
 ];
 
 export default function Pinned({

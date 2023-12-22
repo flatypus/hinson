@@ -31,8 +31,8 @@ export default function Slider({
 
   return (
     <div
-      className={`relative flex h-full w-full flex-row overflow-hidden text-black transition-all duration-300 ${
-        one ? "gap-0 p-2" : "gap-2 p-4"
+      className={`relative flex h-full w-full flex-row overflow-hidden p-2 text-black transition-all duration-300 ${
+        one ? "gap-0" : ""
       }`}
       onMouseMove={(e) => {
         if (dragging && boundingBox !== null) {

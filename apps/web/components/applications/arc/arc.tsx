@@ -44,10 +44,23 @@ const innerElems = (
             src={tab.icon}
             width={16}
           />
-          <input
-            className="w-[80%] overflow-hidden whitespace-nowrap break-keep border-none bg-transparent text-left text-black outline-none"
-            value={tab.name}
-          />
+          {selectedTab === index ? (
+            <div className="w-[80%] border-none bg-transparent text-left text-black outline-none">
+              {tab.name}
+            </div>
+          ) : (
+            <input
+              className="w-[80%] border-none bg-transparent text-left text-black outline-none"
+              defaultValue={tab.name}
+              onBlur={(event) => {
+                event.preventDefault();
+                const newTabs = [...tabs];
+                newTabs[index].name = event.currentTarget.value;
+                setTabs(newTabs);
+              }}
+              type="text"
+            />
+          )}
           <div className="absolute right-1 top-[50%] -translate-y-1/2 transform">
             <button
               className="rounded-lg px-[2px] pt-[2px] hover:bg-black hover:bg-opacity-5"
@@ -162,7 +175,9 @@ export default function Arc(): JSX.Element {
                       ) : (
                         <iframe
                           className={`h-full w-full ${
-                            index === selectedTab ? "z-10" : "z-0"
+                            index === selectedTab
+                              ? "z-10 opacity-100"
+                              : "z-0 opacity-0"
                           } absolute left-0 top-0 overflow-hidden`}
                           key={tab.name}
                           src={tab.url}
