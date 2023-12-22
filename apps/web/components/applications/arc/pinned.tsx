@@ -56,7 +56,7 @@ const pinned = [
   },
   {
     icon: "music",
-    url: "https://music.youtube.com",
+    url: "https://music.youtube.com/playlist?list=PLlIRkM5RM1uowMk4yjLfARG0mT5kzuYhp&si=k1NaXK-PkLuKvO8F",
   },
   {
     icon: "maps",
