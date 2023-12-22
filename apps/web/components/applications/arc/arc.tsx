@@ -27,7 +27,7 @@ const innerElems = (
     <div className="flex h-full flex-col gap-1 overflow-y-scroll">
       {tabs.map((tab, index) => (
         <button
-          className={`relative flex cursor-default items-center justify-start gap-2 rounded-md p-2 ${
+          className={`group relative flex cursor-default items-center justify-start gap-2 rounded-md p-2 ${
             index === selectedTab
               ? "bg-white bg-opacity-80"
               : "bg-transparent hover:bg-white hover:bg-opacity-10"
@@ -46,12 +46,12 @@ const innerElems = (
             width={16}
           />
           {selectedTab === index ? (
-            <div className="w-[80%] border-none bg-transparent text-left text-black outline-none">
+            <div className="w-[85%] border-none bg-transparent text-left text-black outline-none">
               {tab.name}
             </div>
           ) : (
             <input
-              className="w-[80%] border-none bg-transparent text-left text-black outline-none"
+              className="w-full border-none bg-transparent text-left text-black outline-none group-hover:w-[85%]"
               defaultValue={tab.name}
               onBlur={(event) => {
                 event.preventDefault();
@@ -70,7 +70,7 @@ const innerElems = (
                   setTabs(newTabs);
                 }}
               >
-                <XIcon />
+                <XIcon className="opacity-0 group-hover:opacity-100" />
               </div>
             }
           </div>
