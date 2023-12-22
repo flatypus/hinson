@@ -4,6 +4,7 @@ import Welcome from "../welcome/welcome";
 import GrainyGradient from "./grainy-gradient";
 import Input from "./input";
 import Pinned from "./pinned";
+import { MinimizedSidebar, Sidebar } from "./sidebar";
 
 type Tab = {
   name: string;
@@ -20,57 +21,6 @@ const innerElems = (currentURL: string, shortenedName: string): JSX.Element => (
     </h3>
   </>
 );
-
-function MinimizedSidebar({
-  children,
-  show,
-}: {
-  children: JSX.Element;
-  show: boolean | null;
-}): JSX.Element {
-  const [hovering, setHovering] = useState(false);
-
-  return (
-    <div className="relative text-[12px]">
-      <div
-        className={`absolute left-0 top-0 z-20 h-full ${
-          show || hovering ? "translate-x-0" : "-translate-x-[120%]"
-        } transition-all duration-300`}
-        onMouseEnter={() => {
-          setHovering(true);
-        }}
-        onMouseLeave={() => {
-          setHovering(false);
-        }}
-      >
-        <GrainyGradient
-          className="h-full !w-[200px] rounded-lg border-[1px] border-white border-opacity-80 p-2 shadow-lg"
-          innerClassName="flex !flex-col gap-y-2 p-1"
-        >
-          {children}
-        </GrainyGradient>
-      </div>
-    </div>
-  );
-}
-
-function Sidebar({
-  children,
-  small,
-}: {
-  children: JSX.Element;
-  small: boolean;
-}): JSX.Element {
-  return (
-    <div
-      className={`flex w-1/5 flex-col gap-y-2 text-[12px] transition-all ${
-        small ? "w-[1px]" : "mr-3 w-1/5 max-w-[500px] lg:w-1/6"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function Arc(): JSX.Element {
   const BREAKPOINT = 1200;
