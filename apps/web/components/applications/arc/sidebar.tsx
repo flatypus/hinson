@@ -13,7 +13,7 @@ export function MinimizedSidebar({
   return (
     <div className="relative text-[12px]">
       <div
-        className={`absolute left-0 top-0 z-20 h-full ${
+        className={`absolute left-2 top-2 z-20 h-[calc(100%-16px)] ${
           show || hovering ? "translate-x-0" : "-translate-x-[120%]"
         } transition-all duration-300`}
         onMouseEnter={() => {
@@ -43,8 +43,8 @@ export function Sidebar({
 }): JSX.Element {
   return (
     <div
-      className={`flex w-1/5 flex-col gap-y-2 text-[12px] transition-all ${
-        small ? "w-[1px]" : "mr-3 w-1/5 max-w-[500px] lg:w-1/6"
+      className={`flex w-1/5 flex-col gap-y-2 text-[12px] transition-all duration-300 ${
+        small ? "-translate-x-[120%] overflow-hidden" : "mr-3 w-full"
       }`}
     >
       {children}

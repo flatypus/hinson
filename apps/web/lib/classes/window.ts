@@ -32,7 +32,7 @@ export class Window {
   docked: boolean;
 
   private defaultFps = 180;
-  private defaultTime = 100;
+  private defaultTime = 200;
   private getWindows: () => Window[];
   private refreshWindows: () => void;
   private dimensionSubscribers: {

@@ -163,7 +163,7 @@ function Cards(): JSX.Element {
       }`}
     >
       <Card
-        delay={400}
+        delay={600}
         description="Lead full-stack developer for UN accredited edtech startup, building an AI-driven learning platform"
         image="/images/edubeyond.png"
         link="https://edubeyond.org/"
@@ -171,7 +171,7 @@ function Cards(): JSX.Element {
       />
 
       <Card
-        delay={500}
+        delay={700}
         description="Channel for engineering and history videos about random projects. We're at 1,200 subscribers and 120k views!"
         image="/images/flatypus.png"
         link="https://youtube.com/flatypus"
@@ -179,7 +179,7 @@ function Cards(): JSX.Element {
       />
 
       <Card
-        delay={600}
+        delay={800}
         description="Developer-focused python library for building self-prompting agents. 3,000+ downloads!"
         image="/images/github.png"
         link="https://github.com/flatypus/flowchat"
@@ -187,7 +187,7 @@ function Cards(): JSX.Element {
       />
 
       <Card
-        delay={700}
+        delay={900}
         description="Personal website designed around my MacOS workstation. You're on it right now!"
         image="/images/github.png"
         link="https://github.com/flatypus/portfolio"
@@ -200,7 +200,7 @@ function Cards(): JSX.Element {
 function Icons(): JSX.Element {
   return (
     <span className="mt-[5px] flex flex-row gap-x-[2px] md:mt-[10px]">
-      <AnimationDelay delay={300}>
+      <AnimationDelay delay={500}>
         <a href="https://github.com/flatypus" rel="noopener" target="_blank">
           <FaGithub
             className="hover-scale-large mt-[2.6px] cursor-pointer"
@@ -211,7 +211,7 @@ function Icons(): JSX.Element {
         </a>
       </AnimationDelay>
 
-      <AnimationDelay delay={400}>
+      <AnimationDelay delay={600}>
         <a
           href="https://linkedin.com/in/hinson-chan"
           rel="noopener"
@@ -226,7 +226,7 @@ function Icons(): JSX.Element {
         </a>
       </AnimationDelay>
 
-      <AnimationDelay delay={500}>
+      <AnimationDelay delay={700}>
         <a href="https://youtube.com/flatypus" rel="noopener" target="_blank">
           <FaYoutube
             className="hover-scale-large cursor-pointer"
@@ -251,7 +251,7 @@ export default function Welcome(): JSX.Element {
           <div className="p-8 md:p-16">
             <AnimationDelay
               className="flex flex-row justify-between text-left text-2xl font-bold md:text-4xl"
-              delay={200}
+              delay={400}
             >
               <h1>Hi, I&apos;m Hinson.</h1>
 
@@ -260,13 +260,13 @@ export default function Welcome(): JSX.Element {
 
             <AnimationDelay
               className="mt-4 text-left text-sm font-light text-gray-600 md:text-xl"
-              delay={300}
+              delay={500}
             >
               Full Stack Developer, AI Researcher, Bubble Tea Enthusiast
             </AnimationDelay>
 
             <Cards />
-            <AnimationDelay delay={800}>
+            <AnimationDelay delay={1000}>
               <footer className="text-sm text-black text-opacity-90">
                 Made with ❤️ by Hinson with Nextjs and TailwindCSS
               </footer>
