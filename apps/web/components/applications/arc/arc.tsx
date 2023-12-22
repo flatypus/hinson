@@ -26,55 +26,57 @@ const innerElems = (
     </h3>
     <div className="flex h-full flex-col gap-1 overflow-y-scroll">
       {tabs.map((tab, index) => (
-        <button
-          className={`group relative flex cursor-default items-center justify-start gap-2 rounded-md p-2 ${
-            index === selectedTab
-              ? "bg-white bg-opacity-80"
-              : "bg-transparent hover:bg-white hover:bg-opacity-10"
-          }`}
-          key={tab.key}
-          onClick={() => {
-            setSelectedTab(index);
-          }}
-          type="button"
-        >
-          <Image
-            alt={tab.name}
-            className="w-[10px] rounded-md"
-            height={16}
-            src={tab.icon}
-            width={16}
-          />
-          {selectedTab === index ? (
-            <div className="w-[85%] border-none bg-transparent text-left text-black outline-none">
-              {tab.name}
-            </div>
-          ) : (
-            <input
-              className="w-full border-none bg-transparent text-left text-black outline-none group-hover:w-[85%]"
-              defaultValue={tab.name}
-              onBlur={(event) => {
-                event.preventDefault();
-              }}
-              type="text"
-            />
-          )}
+        <div className="group relative w-full" key={tab.key}>
           <div className="absolute right-1 top-[50%] -translate-y-1/2 transform">
-            {
-              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- delete button
-              <div
-                className="rounded-lg px-[2px] pt-[2px] hover:bg-black hover:bg-opacity-5"
-                onClick={() => {
-                  const newTabs = [...tabs];
-                  newTabs.splice(index, 1);
-                  setTabs(newTabs);
-                }}
-              >
-                <XIcon className="opacity-0 group-hover:opacity-100" />
-              </div>
-            }
+            <button
+              className="cursor-default rounded-lg px-[2px] pt-[2px] hover:bg-black hover:bg-opacity-5"
+              onClick={() => {
+                const newTabs = [...tabs];
+                newTabs.splice(index, 1);
+                setTabs(newTabs);
+                if (index === selectedTab) {
+                  setSelectedTab(newTabs.length - 1);
+                }
+              }}
+              type="button"
+            >
+              <XIcon className="opacity-0 group-hover:opacity-100" />
+            </button>
           </div>
-        </button>
+          <button
+            className={`flex w-full cursor-default items-center justify-start gap-2 rounded-md p-2 ${
+              index === selectedTab
+                ? "bg-white bg-opacity-80"
+                : "bg-transparent hover:bg-white hover:bg-opacity-10"
+            }`}
+            onClick={() => {
+              setSelectedTab(index);
+            }}
+            type="button"
+          >
+            <Image
+              alt={tab.name}
+              className="w-[10px] rounded-md"
+              height={16}
+              src={tab.icon}
+              width={16}
+            />
+            {selectedTab === index ? (
+              <div className="w-[80%] border-none bg-transparent text-left text-black outline-none">
+                {tab.name}
+              </div>
+            ) : (
+              <input
+                className="w-full border-none bg-transparent text-left text-black outline-none group-hover:w-[80%]"
+                defaultValue={tab.name}
+                onBlur={(event) => {
+                  event.preventDefault();
+                }}
+                type="text"
+              />
+            )}
+          </button>
+        </div>
       ))}
     </div>
   </>

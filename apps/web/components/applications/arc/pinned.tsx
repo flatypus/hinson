@@ -86,7 +86,7 @@ export default function Pinned({
   return (
     <div className="grid grid-cols-3 gap-2">
       {pinned.map(({ icon, url, size }) => {
-        const key = (new Date().getTime() + Math.random()).toString();
+        const key = (new Date().getTime() + Math.random() + icon).toString();
         const Icon = (
           <Image
             alt={icon}
