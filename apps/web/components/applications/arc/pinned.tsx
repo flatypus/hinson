@@ -1,6 +1,18 @@
 import Image from "next/image";
+import { useContext, useEffect, useState } from "react";
+import { WindowContext } from "@stores/window.context";
 
 export default function Pinned(): JSX.Element {
+  const { subscribe } = useContext(WindowContext);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const { width: lastWidth } = subscribe((window) => {
+      setWidth(window.width);
+    });
+    setWidth(lastWidth);
+  }, [subscribe]);
+
   const pinned = [
     {
       icon: "notion.png",
@@ -55,9 +67,9 @@ export default function Pinned(): JSX.Element {
         >
           <Image
             alt={url}
-            height={size ?? 16}
+            height={(size ?? 16) * (width < 800 ? 1 : 1.5)}
             src={`/icons/${icon}`}
-            width={size ?? 16}
+            width={(size ?? 16) * (width < 800 ? 1 : 1.5)}
           />
         </a>
       ))}

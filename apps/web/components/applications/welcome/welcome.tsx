@@ -263,9 +263,11 @@ export default function Welcome(): JSX.Element {
             </AnimationDelay>
 
             <Cards />
-            <footer className="text-sm text-black text-opacity-90">
-              Made with ❤️ by Hinson with Nextjs and TailwindCSS
-            </footer>
+            <AnimationDelay delay={800}>
+              <footer className="text-sm text-black text-opacity-90">
+                Made with ❤️ by Hinson with Nextjs and TailwindCSS
+              </footer>
+            </AnimationDelay>
           </div>
         </div>
       </div>
