@@ -74,7 +74,8 @@ export default function Slider({
       <div
         className="overflow-hidden"
         style={
-          one ? { width: "100%" } : { width: `${(1 - proportion) * 100}%` }
+          // the 122 is a temporary solution to an animation bug
+          one ? { width: "100%" } : { width: `${(1 - proportion) * 122}%` }
         }
       >
         {componentB}
