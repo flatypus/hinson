@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { WindowContext } from "@stores/window.context";
 import Welcome from "../welcome/welcome";
 import GrainyGradient from "./grainy-gradient";
@@ -31,7 +31,7 @@ function MinimizedSidebar({
   const [hovering, setHovering] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="relative text-[12px]">
       <div
         className={`absolute left-0 top-0 z-20 h-full ${
           show || hovering ? "translate-x-0" : "-translate-x-[120%]"
@@ -44,8 +44,8 @@ function MinimizedSidebar({
         }}
       >
         <GrainyGradient
-          className="h-full !w-[250px] rounded-lg border-[1px] border-white border-opacity-80 p-2 shadow-lg"
-          innerClassName="flex !flex-col gap-y-2 p-3"
+          className="h-full !w-[200px] rounded-lg border-[1px] border-white border-opacity-80 p-2 shadow-lg"
+          innerClassName="flex !flex-col gap-y-2 p-1"
         >
           {children}
         </GrainyGradient>
@@ -63,7 +63,7 @@ function Sidebar({
 }): JSX.Element {
   return (
     <div
-      className={`flex w-1/5 flex-col gap-y-2 transition-all ${
+      className={`flex w-1/5 flex-col gap-y-2 text-[12px] transition-all ${
         small ? "w-[1px]" : "mr-3 w-1/5 max-w-[500px] lg:w-1/6"
       }`}
     >
@@ -73,10 +73,12 @@ function Sidebar({
 }
 
 export default function Arc(): JSX.Element {
+  const BREAKPOINT = 1200;
   const [hover, setHover] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [dims, setDims] = useState({ width: 0, height: 0, x: 0, y: 0 });
-  const [minimized, setMinimized] = useState(dims.width < 800);
+  const small = useMemo(() => dims.width < BREAKPOINT, [dims.width]);
+  const [minimized, setMinimized] = useState(small);
 
   const { subscribe } = useContext(WindowContext);
   const windowRef = useRef<HTMLDivElement>(null);
@@ -93,18 +95,21 @@ export default function Arc(): JSX.Element {
   const shortenedName = tabs[selectedTab].url.split("://")[1].split("/")[0];
 
   useEffect(() => {
-    const newDimensions = subscribe((dimensions) => {
-      setDims(dimensions);
+    const newDimensions = subscribe({
+      breakpoint: { width: BREAKPOINT },
+      callback: (dimensions) => {
+        setDims(dimensions);
+      },
     });
     setDims(newDimensions);
   }, [subscribe]);
 
   useEffect(() => {
-    if (dims.width < 800 === minimized) return;
+    if (small === minimized) return;
     setTimeout(() => {
-      setMinimized(dims.width < 800);
+      setMinimized(small);
     }, 300);
-  }, [dims.width, minimized]);
+  }, [small, minimized]);
 
   return (
     <GrainyGradient>
@@ -122,13 +127,13 @@ export default function Arc(): JSX.Element {
         ref={windowRef}
       >
         {/* for minimized/phone view */}
-        {dims.width < 800 ? (
+        {small ? (
           <MinimizedSidebar show={hover ? mouse.x - dims.x < 15 : null}>
             {innerElems(tabs[selectedTab].url, shortenedName)}
           </MinimizedSidebar>
         ) : null}
         {/* for full width */}
-        <Sidebar small={dims.width < 800}>
+        <Sidebar small={small}>
           {innerElems(tabs[selectedTab].url, shortenedName)}
         </Sidebar>
         <div className="relative flex h-full w-full flex-col gap-1">

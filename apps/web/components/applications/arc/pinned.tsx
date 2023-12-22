@@ -7,8 +7,11 @@ export default function Pinned(): JSX.Element {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const { width: lastWidth } = subscribe((window) => {
-      setWidth(window.width);
+    const { width: lastWidth } = subscribe({
+      breakpoint: { width: 1200 },
+      callback: (window) => {
+        setWidth(window.width);
+      },
     });
     setWidth(lastWidth);
   }, [subscribe]);
@@ -67,9 +70,9 @@ export default function Pinned(): JSX.Element {
         >
           <Image
             alt={url}
-            height={(size ?? 16) * (width < 800 ? 1 : 1.5)}
+            height={(size ?? 16) * (width < 800 ? 1 : 1.25)}
             src={`/icons/${icon}`}
-            width={(size ?? 16) * (width < 800 ? 1 : 1.5)}
+            width={(size ?? 16) * (width < 800 ? 1 : 1.25)}
           />
         </a>
       ))}

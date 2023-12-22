@@ -147,8 +147,11 @@ function Cards(): JSX.Element {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const { width: lastWidth } = subscribe((window) => {
-      setWidth(window.width);
+    const { width: lastWidth } = subscribe({
+      breakpoint: { width: 800 },
+      callback: (window) => {
+        setWidth(window.width);
+      },
     });
     setWidth(lastWidth);
   }, [subscribe]);

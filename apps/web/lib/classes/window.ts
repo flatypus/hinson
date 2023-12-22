@@ -35,7 +35,10 @@ export class Window {
   private defaultTime = 100;
   private getWindows: () => Window[];
   private refreshWindows: () => void;
-  private dimensionSubscribers: ((dimensions: Dimensions) => void)[] = [];
+  private dimensionSubscribers: {
+    callback: (dimensions: Dimensions) => void;
+    breakpoint?: Partial<Dimensions>;
+  }[] = [];
   private getWindowSize = (): { width: number; height: number } => {
     return { width: 0, height: 0 };
   };
@@ -161,9 +164,10 @@ export class Window {
     this.getWindowSize = getWindowSize;
   }
 
-  subscribe: (callback: (dimensions: Dimensions) => void) => Dimensions = (
-    callback,
-  ) => {
+  subscribe: (subscription: {
+    callback: (dimensions: Dimensions) => void;
+    breakpoint?: Partial<Dimensions>;
+  }) => Dimensions = (callback) => {
     this.dimensionSubscribers.push(callback);
     return {
       x: this.x,
@@ -184,6 +188,13 @@ export class Window {
         "Invalid input: width and height should be positive numbers.",
       );
     }
+    const old = {
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      height: this.height,
+    };
+
     if (animate) {
       this.animate({ x, y, width, height });
     } else {
@@ -193,8 +204,29 @@ export class Window {
       this.height = height;
       this.refreshWindows();
     }
-    this.dimensionSubscribers.forEach((callback) => {
-      callback({ width, height, x, y });
+
+    const crossesPoint = (
+      oldPoint: number,
+      current: number,
+      point: number,
+    ): boolean =>
+      (oldPoint < point && current >= point) ||
+      (oldPoint >= point && current < point);
+
+    this.dimensionSubscribers.forEach(({ callback, breakpoint }) => {
+      if (!breakpoint) {
+        callback({ width, height, x, y });
+        return;
+      }
+
+      if (
+        crossesPoint(old.x, x, breakpoint.x ?? 0) ||
+        crossesPoint(old.y, y, breakpoint.y ?? 0) ||
+        crossesPoint(old.width, width, breakpoint.width ?? Infinity) ||
+        crossesPoint(old.height, height, breakpoint.height ?? Infinity)
+      ) {
+        callback({ width, height, x, y });
+      }
     });
   }
 
