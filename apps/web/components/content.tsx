@@ -13,7 +13,7 @@ export default function Content({
   path: string[] | undefined;
 }): JSX.Element {
   const { windows, setGetWindowSize, addWindow } = useWindowsStore();
-  const { setIsTouchDevice } = useSettingsStore();
+  const { setIsTouchDevice, isTouchDevice } = useSettingsStore();
 
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window);
@@ -57,6 +57,9 @@ export default function Content({
   return (
     <div className="flex-1">
       {windows.map((app) => {
+        if (isTouchDevice && !app.active) {
+          return null;
+        }
         if (app.mode !== "minimized" && app.mode !== "closed") {
           return <Window app={app} key={app.name} />;
         }

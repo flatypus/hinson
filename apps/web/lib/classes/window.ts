@@ -1,5 +1,6 @@
 import type { Icon } from "@components/shared/file-structure";
 import type { WindowMode } from "@lib/types";
+import useSettingsStore from "@stores/settings.store";
 
 interface WindowConstructor {
   name: string;
@@ -79,7 +80,7 @@ export class Window {
     width?: number;
     height?: number;
   }): void {
-    const frames = 8;
+    const frames = 24;
 
     const start = {
       x: this.x,
@@ -184,7 +185,7 @@ export class Window {
       height: this.height,
     };
 
-    if (animate) {
+    if (animate && !useSettingsStore.getState().isTouchDevice) {
       this.animate({ x, y, width, height });
     } else {
       this.x = x;
@@ -220,7 +221,9 @@ export class Window {
   }
 
   hide(animate = true): void {
-    if (animate) this.setMode("hiding");
+    if (animate && !useSettingsStore.getState().isTouchDevice) {
+      this.setMode("hiding");
+    }
     const { width: innerWidth, height: innerHeight } = this.getWindowSize();
     this.setTransform(innerWidth / 2 - 100, innerHeight - 60, 0, 0, animate);
   }
