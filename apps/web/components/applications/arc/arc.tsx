@@ -61,13 +61,14 @@ export default function Arc(): JSX.Element {
     : "";
 
   useEffect(() => {
-    const newDimensions = subscribe({
-      breakpoint: { width: BREAKPOINT },
-      callback: (dimensions) => {
-        setDims(dimensions);
-      },
-    });
-    setDims(newDimensions);
+    setTimeout(() => {
+      const newDimensions = subscribe({
+        callback: (dimensions) => {
+          setDims(dimensions);
+        },
+      });
+      setDims(newDimensions);
+    }, 300);
   }, [subscribe]);
 
   useEffect(() => {
@@ -92,9 +93,10 @@ export default function Arc(): JSX.Element {
         }}
         ref={windowRef}
       >
+        {/* {JSON.stringify({ hover, x: mouse.x, d: dims.x })} */}
         {/* for minimized/phone view */}
         {small ? (
-          <MinimizedSidebar show={hover ? mouse.x - dims.x < 8 : null}>
+          <MinimizedSidebar show={Boolean(hover && mouse.x - dims.x < 8)}>
             {innerElems(
               selectedTab,
               setSelectedTab,

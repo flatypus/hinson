@@ -48,7 +48,8 @@ export default function Playing(): JSX.Element {
           return;
         }
         setCurrentlyPlaying(data);
-      });
+      })
+      .catch(() => null);
   };
 
   useEffect(() => {
