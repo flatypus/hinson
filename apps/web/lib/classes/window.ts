@@ -31,8 +31,7 @@ export class Window {
   y = 0;
   docked: boolean;
 
-  private defaultFps = 180;
-  private defaultTime = 200;
+  private defaultTime = 50;
   private getWindows: () => Window[];
   private refreshWindows: () => void;
   private dimensionSubscribers: {
@@ -79,10 +78,8 @@ export class Window {
     y?: number;
     width?: number;
     height?: number;
-  }): () => void {
-    const fps = this.defaultFps;
-    const time = this.defaultTime;
-    const frames = fps * (time / 1000);
+  }): void {
+    const frames = 8;
 
     const start = {
       x: this.x,
@@ -97,8 +94,6 @@ export class Window {
       width: target.width ?? this.width,
       height: target.height ?? this.height,
     };
-
-    const toCancel: number[] = [];
 
     const values: { x: number; y: number; width: number; height: number }[] =
       [];
@@ -124,17 +119,11 @@ export class Window {
       this.refreshWindows();
 
       if (frame < frames) {
-        toCancel.push(requestAnimationFrame(animateFrame));
+        requestAnimationFrame(animateFrame);
       }
     };
 
-    toCancel.push(requestAnimationFrame(animateFrame));
-
-    return () => {
-      toCancel.forEach((cancelHandle) => {
-        cancelAnimationFrame(cancelHandle);
-      });
-    };
+    requestAnimationFrame(animateFrame);
   }
 
   private randomWindowTransform(): void {
