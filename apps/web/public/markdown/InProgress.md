@@ -1,3 +1,3 @@
-# 3AM Hinson needs some sleep...zzzzz
+# 🚧🏗 This page is in progress! 🏗️🚧 ️
 
-This page is in progress! But don't worry, if Hinson put this here, it means he has big plans for it!
+But don't worry, if Hinson put this here, it means he has big plans for it!
