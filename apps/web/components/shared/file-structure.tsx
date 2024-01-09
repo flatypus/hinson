@@ -2,14 +2,13 @@ import {
   AppsIcon,
   FileDirectoryIcon,
   HomeIcon,
-  MailIcon,
-  RocketIcon,
+  // RocketIcon,
 } from "@primer/octicons-react";
 import type { FunctionComponent } from "react";
 import type { IconProps } from "@primer/octicons-react";
 import { IconFromPath, MarkdownIcon } from "@components/image_icons/";
 import Arc from "@components/applications/arc/arc";
-import CSSBattles from "@components/projects/cssbattles";
+// import CSSBattles from "@components/projects/cssbattles";
 import MarkdownPage from "@components/applications/markdown-page/markdown-page";
 import Welcome from "@components/applications/welcome/welcome";
 
@@ -101,44 +100,38 @@ export const fileStructure = new Directory({
               content: <Welcome />,
             }),
             new File({
+              name: "ContactMe.md",
+              icon: MarkdownIcon,
+              content: <MarkdownPage path="/markdown/ContactMe.md" />,
+            }),
+            new File({
               name: "Credits.md",
               icon: MarkdownIcon,
               content: <MarkdownPage path="/markdown/Credits.md" />,
             }),
           ],
         }),
-        new Directory({
-          name: "Projects",
-          icon: RocketIcon,
-          children: [
-            new File({
-              name: "EduBeyond.md",
-              icon: MarkdownIcon,
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
-            }),
-            new File({
-              name: "YouTube.md",
-              icon: MarkdownIcon,
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
-            }),
-            new File({
-              name: "CSSBattles!",
-              icon: "/icons/cssbattles.png",
-              content: <CSSBattles />,
-            }),
-          ],
-        }),
-        new Directory({
-          name: "ContactMe",
-          icon: MailIcon,
-          children: [
-            new File({
-              name: "ContactMe.md",
-              icon: MarkdownIcon,
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
-            }),
-          ],
-        }),
+        // new Directory({
+        //   name: "Projects",
+        //   icon: RocketIcon,
+        //   children: [
+        //     new File({
+        //       name: "EduBeyond.md",
+        //       icon: MarkdownIcon,
+        //       content: <MarkdownPage path="/markdown/InProgress.md" />,
+        //     }),
+        //     new File({
+        //       name: "YouTube.md",
+        //       icon: MarkdownIcon,
+        //       content: <MarkdownPage path="/markdown/InProgress.md" />,
+        //     }),
+        //     new File({
+        //       name: "CSSBattles!",
+        //       icon: "/icons/cssbattles.png",
+        //       content: <CSSBattles />,
+        //     }),
+        //   ],
+        // }),
         new Directory({
           name: "Applications",
           icon: AppsIcon,
@@ -151,22 +144,22 @@ export const fileStructure = new Directory({
             new File({
               name: "Discord",
               icon: "/icons/discord.png",
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
+              // content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
               name: "Code",
               icon: "/icons/vscode.png",
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
+              // content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
               name: "iTerm",
               icon: "/icons/iterm.png",
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
+              // content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
               name: "Notion",
               icon: "/icons/notion.png",
-              content: <MarkdownPage path="/markdown/InProgress.md" />,
+              // content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
           ],
         }),

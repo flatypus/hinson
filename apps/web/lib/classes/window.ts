@@ -25,7 +25,7 @@ export class Window {
   icon: Icon | string;
   active: boolean;
   mode: WindowMode;
-  component: JSX.Element;
+  component?: JSX.Element;
   width = 0;
   height = 0;
   x = 0;
