@@ -154,7 +154,6 @@ export const fileStructure = new Directory({
             new File({
               name: "iTerm",
               icon: "/icons/iterm.png",
-              // content: <MarkdownPage path="/markdown/InProgress.md" />,
             }),
             new File({
               name: "Notion",

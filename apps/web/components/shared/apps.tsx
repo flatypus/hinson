@@ -1,4 +1,5 @@
 import Arc from "@components/applications/arc/arc";
+import Iterm from "@components/applications/iterm/iterm";
 // import MarkdownPage from "@components/applications/markdown-page/markdown-page";
 
 export const apps = [
@@ -29,7 +30,7 @@ export const apps = [
   {
     name: "iTerm",
     icon: "iterm.png",
-    // component: <MarkdownPage path="/markdown/InProgress.md" />,
+    component: <Iterm />,
   },
   {
     name: "Notion",

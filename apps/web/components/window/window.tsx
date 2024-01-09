@@ -5,6 +5,7 @@ import type { Window } from "@lib/classes/window";
 import useSettingsStore from "@stores/settings.store";
 import Finder from "@components/applications/finder/finder";
 import { WindowContext } from "@stores/window.context";
+import Iterm from "@components/applications/iterm/iterm";
 import { TitleBar } from "./titlebar";
 
 export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
@@ -52,7 +53,16 @@ export default function WindowWrapper({ app }: { app: Window }): JSX.Element {
           <TitleBar app={app} />
           <div className="z-10 h-[calc(100%-22px)] w-full overflow-hidden">
             {/* Circular dependency resolution... :p */}
-            {app.name === "Finder" ? <Finder /> : app.component}
+            {(() => {
+              switch (app.name) {
+                case "Finder":
+                  return <Finder />;
+                case "iTerm":
+                  return <Iterm />;
+                default:
+                  return app.component;
+              }
+            })()}
           </div>
         </div>
       </Rnd>

@@ -15,7 +15,10 @@ export default function Dock(): JSX.Element {
           .filter((app) => app.docked || app.mode !== "closed")
           .map((app) => {
             const onOpen = (): void => {
-              if (!app.component && app.name !== "Finder") return;
+              if (!app.component && !["Finder", "Iterm"].includes(app.name)) {
+                return;
+              }
+
               // TODO: fix this logic?
               if (app.mode === "fullscreen") {
                 if (app.active) {
