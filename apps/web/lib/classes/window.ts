@@ -5,7 +5,7 @@ import useSettingsStore from "@stores/settings.store";
 interface WindowConstructor {
   name: string;
   icon: Icon | string;
-  component: JSX.Element;
+  component?: JSX.Element;
   getWindows: () => Window[];
   refreshWindows: () => void;
   active?: boolean;
