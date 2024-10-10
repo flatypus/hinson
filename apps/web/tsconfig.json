@@ -16,33 +16,14 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@lib/*": [
-        "./lib/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@shared/*": [
-        "./shared/*"
-      ],
-      "@stores/*": [
-        "./stores/*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ]
+      "@components/*": ["./components/*"],
+      "@lib/*": ["./lib/*"],
+      "@public/*": ["./public/*"],
+      "@shared/*": ["./shared/*"],
+      "@stores/*": ["./stores/*"],
+      "@styles/*": ["./styles/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
