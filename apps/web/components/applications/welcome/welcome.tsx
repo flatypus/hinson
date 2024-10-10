@@ -2,39 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { WindowContext } from "@stores/window.context";
-
-function Blobs(): JSX.Element {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 -top-20 transform-gpu overflow-hidden blur-3xl"
-    >
-      <div
-        className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#c680ff] to-[#9089fc] opacity-30 sm:left-[calc(50%-35rem)] sm:w-[72.1875rem]"
-        style={{
-          clipPath:
-            "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-        }}
-      />
-
-      <div
-        className="relative left-[calc(50%+11rem)] aspect-[1155/678] w-[36.125rem] translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#9089fc] to-[#c680ff] opacity-30 sm:left-[calc(50%-35rem)] sm:w-[72.1875rem]"
-        style={{
-          clipPath: "ellipse(7% 50% at 50% 50%)",
-        }}
-      />
-    </div>
-  );
-}
-
-function VerticalInnerShadow(): JSX.Element {
-  return (
-    <div
-      className="pointer-events-none absolute left-0 top-0 z-10 mt-6 h-[calc(100%-20px)] w-full rotate-180"
-      style={{ boxShadow: "inset 0 20px 10px -10px rgb(1 1 1 / 0.15)" }}
-    />
-  );
-}
+import { Blobs } from "./blobs";
+import { VerticalInnerShadow } from "./vertical-inner-shadow";
 
 function AnimationDelay({
   delay,
@@ -164,7 +133,7 @@ function Cards(): JSX.Element {
     >
       <Card
         delay={600}
-        description="Lead full-stack developer for UN accredited edtech startup, building an AI-driven learning platform"
+        description="Cofounder and lead software developer for UN accredited edtech startup, building an AI-driven learning platform"
         image="/images/edubeyond.png"
         link="https://edubeyond.org/"
         title="EduBeyond"
@@ -172,7 +141,7 @@ function Cards(): JSX.Element {
 
       <Card
         delay={700}
-        description="Channel for engineering and history videos about random projects. We're at 1,200 subscribers and 120k views!"
+        description="Channel for engineering and history videos about random projects. We're at 1,900 subscribers and 160k views!"
         image="/images/flatypus.png"
         link="https://youtube.com/flatypus"
         title="YouTube"
@@ -180,7 +149,7 @@ function Cards(): JSX.Element {
 
       <Card
         delay={800}
-        description="Developer-focused python library for building self-prompting agents. 3,000+ downloads!"
+        description="Developer-focused python library for building self-prompting agents. 30,000+ downloads!"
         image="/images/github.png"
         link="https://github.com/flatypus/flowchat"
         title="flowchat"
