@@ -1,0 +1,508 @@
+{
+  "name": "Total Defense Budget 2024",
+  "cost": 841227733,
+  "subcategories": [
+    {
+      "name": "Military Personnel",
+      "cost": 172816917,
+      "subcategories": [
+        {
+          "name": "Army Military Personnel",
+          "cost": 48625360
+        },
+        {
+          "name": "Army Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 2846715
+        },
+        {
+          "name": "Navy Military Personnel",
+          "cost": 36850803
+        },
+        {
+          "name": "Navy Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 2175657
+        },
+        {
+          "name": "Marine Corps Military Personnel",
+          "cost": 14714927
+        },
+        {
+          "name": "Marine Corps Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 1102935
+        },
+        {
+          "name": "Air Force Military Personnel",
+          "cost": 35412164
+        },
+        {
+          "name": "Air Force Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 2047979
+        },
+        {
+          "name": "Space Force Military Personnel",
+          "cost": 1217262
+        },
+        {
+          "name": "Space Force Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 58016
+        },
+        {
+          "name": "Army Reserve Personnel",
+          "cost": 5329776
+        },
+        {
+          "name": "Army Reserve Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 502581
+        },
+        {
+          "name": "Navy Reserve Personnel",
+          "cost": 2487224
+        },
+        {
+          "name": "Navy Reserve Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 183698
+        },
+        {
+          "name": "Marine Corps Reserve Personnel",
+          "cost": 894954
+        },
+        {
+          "name": "Marine Corps Reserve Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 94316
+        },
+        {
+          "name": "Air Force Reserve Personnel",
+          "cost": 2456009
+        },
+        {
+          "name": "Air Force Reserve Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 198046
+        },
+        {
+          "name": "Army National Guard Personnel",
+          "cost": 9187761
+        },
+        {
+          "name": "Army National Guard Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 971647
+        },
+        {
+          "name": "Air National Guard Personnel",
+          "cost": 5087221
+        },
+        {
+          "name": "Air National Guard Medicare-Eligible Retiree Health Care Fund Contribution",
+          "cost": 371866
+        }
+      ]
+    },
+    {
+      "name": "Operation and Maintenance",
+      "cost": 344676778,
+      "subcategories": [
+        {
+          "name": "Army Operation and Maintenance",
+          "cost": 64175859
+        },
+        {
+          "name": "Navy Operation and Maintenance",
+          "cost": 68475752
+        },
+        {
+          "name": "Marine Corps Operation and Maintenance",
+          "cost": 10352779
+        },
+        {
+          "name": "Air Force Operation and Maintenance",
+          "cost": 61336761
+        },
+        {
+          "name": "Space Force Operation and Maintenance",
+          "cost": 4731125
+        },
+        {
+          "name": "Defense-Wide Operation and Maintenance",
+          "cost": 67760386
+        },
+        {
+          "name": "Office of the Inspector General",
+          "cost": 511265
+        },
+        {
+          "name": "Army Reserve Operation and Maintenance",
+          "cost": 3546503
+        },
+        {
+          "name": "Navy Reserve Operation and Maintenance",
+          "cost": 1403948
+        },
+        {
+          "name": "Marine Corps Reserve Operation and Maintenance",
+          "cost": 348613
+        },
+        {
+          "name": "Air Force Reserve Operation and Maintenance",
+          "cost": 4023178
+        },
+        {
+          "name": "Army National Guard Operation and Maintenance",
+          "cost": 8584168
+        },
+        {
+          "name": "Air National Guard Operation and Maintenance",
+          "cost": 7495878
+        },
+        {
+          "name": "Court of Appeals for the Armed Forces",
+          "cost": 17411
+        },
+        {
+          "name": "Drug Interdiction and Counter-Drug Activities",
+          "cost": 770330
+        },
+        {
+          "name": "Support for International Sporting Competitions",
+          "cost": 2075
+        },
+        {
+          "name": "Defense Health Program",
+          "cost": 38673972
+        },
+        {
+          "name": "Environmental Restoration, Army",
+          "cost": 180205
+        },
+        {
+          "name": "Environmental Restoration, Navy",
+          "cost": 267648
+        },
+        {
+          "name": "Environmental Restoration, Air Force",
+          "cost": 318325
+        },
+        {
+          "name": "Environmental Restoration, Defense",
+          "cost": 7228
+        },
+        {
+          "name": "Environmental Restoration, Formerly Used Defense Sites",
+          "cost": 196098
+        },
+        {
+          "name": "Overseas Humanitarian, Disaster, and Civic Aid",
+          "cost": 353112
+        },
+        {
+          "name": "Cooperative Threat Reduction Account",
+          "cost": 392966
+        },
+        {
+          "name": "Afghanistan Security Forces Fund",
+          "cost": 131630
+        },
+        {
+          "name": "Counter-ISIS Train and Equip Fund",
+          "cost": 479416
+        },
+        {
+          "name": "Department of Defense Acquisition Workforce Development Fund",
+          "cost": 94561
+        },
+        {
+          "name": "Emergency Response Fund",
+          "cost": 3501
+        },
+        {
+          "name": "Disposal of Real Property",
+          "cost": 11099
+        },
+        {
+          "name": "Lease of Real Property",
+          "cost": 30986
+        }
+      ]
+    },
+    {
+      "name": "Procurement",
+      "cost": 156104335,
+      "subcategories": [
+        {
+          "name": "Army Aircraft Procurement",
+          "cost": 3767148
+        },
+        {
+          "name": "Army Missile Procurement",
+          "cost": 4651884
+        },
+        {
+          "name": "Army Procurement of Weapons and Tracked Combat Vehicles",
+          "cost": 4673097
+        },
+        {
+          "name": "Army Procurement of Ammunition",
+          "cost": 4196056
+        },
+        {
+          "name": "Other Army Procurement",
+          "cost": 8766855
+        },
+        {
+          "name": "Joint Improvised-Threat Defeat Fund",
+          "cost": 19555
+        },
+        {
+          "name": "Navy Aircraft Procurement",
+          "cost": 19936085
+        },
+        {
+          "name": "Navy Weapons Procurement",
+          "cost": 4717974
+        },
+        {
+          "name": "Navy and Marine Corps Procurement of Ammunition",
+          "cost": 942280
+        },
+        {
+          "name": "Navy Shipbuilding and Conversion",
+          "cost": 24230850
+        },
+        {
+          "name": "National Sea-Based Deterrence Fund",
+          "cost": 1499919
+        },
+        {
+          "name": "Other Navy Procurement",
+          "cost": 11690912
+        },
+        {
+          "name": "Coastal Defense Augmentation",
+          "cost": 14555
+        },
+        {
+          "name": "Marine Corps Procurement",
+          "cost": 3540032
+        },
+        {
+          "name": "Air Force Aircraft Procurement",
+          "cost": 17897810
+        },
+        {
+          "name": "Air Force Missile Procurement",
+          "cost": 2914696
+        },
+        {
+          "name": "Air Force Space Procurement",
+          "cost": 359731
+        },
+        {
+          "name": "Space Force Procurement",
+          "cost": 3056034
+        },
+        {
+          "name": "Air Force Procurement of Ammunition",
+          "cost": 890165
+        },
+        {
+          "name": "Other Air Force Procurement",
+          "cost": 29203760
+        },
+        {
+          "name": "Defense-Wide Procurement",
+          "cost": 6739896
+        },
+        {
+          "name": "National Guard and Reserve Equipment",
+          "cost": 744085
+        },
+        {
+          "name": "Defense Production Act Purchases",
+          "cost": 778239
+        },
+        {
+          "name": "Chemical Agents and Munitions Destruction, Defense",
+          "cost": 872717
+        }
+      ]
+    },
+    {
+      "name": "Research, Development, Test and Evaluation",
+      "cost": 146868247,
+      "subcategories": [
+        {
+          "name": "Army Research, Development, Test and Evaluation",
+          "cost": 22290966
+        },
+        {
+          "name": "Navy Research, Development, Test and Evaluation",
+          "cost": 25721008
+        },
+        {
+          "name": "Air Force Research, Development, Test and Evaluation",
+          "cost": 46458947
+        },
+        {
+          "name": "Space Force Research, Development, Test and Evaluation",
+          "cost": 17005869
+        },
+        {
+          "name": "Defense-Wide Research, Development, Test and Evaluation",
+          "cost": 35013570
+        },
+        {
+          "name": "Department of Defense Rapid Prototyping Fund",
+          "cost": 15000
+        },
+        {
+          "name": "Operational Test and Evaluation, Defense",
+          "cost": 362887
+        }
+      ]
+    },
+    {
+      "name": "Military Construction",
+      "cost": 15181878,
+      "subcategories": [
+        {
+          "name": "Army Military Construction",
+          "cost": 3132738
+        },
+        {
+          "name": "Navy Military Construction",
+          "cost": 3746120
+        },
+        {
+          "name": "Air Force Military Construction",
+          "cost": 3544252
+        },
+        {
+          "name": "Defense-Wide Military Construction",
+          "cost": 2429828
+        },
+        {
+          "name": "NATO Security Investment Program",
+          "cost": 438356
+        },
+        {
+          "name": "Army National Guard Military Construction",
+          "cost": 560646
+        },
+        {
+          "name": "Air National Guard Military Construction",
+          "cost": 340580
+        },
+        {
+          "name": "Army Reserve Military Construction",
+          "cost": 158053
+        },
+        {
+          "name": "Navy Reserve Military Construction",
+          "cost": 96354
+        },
+        {
+          "name": "Air Force Reserve Military Construction",
+          "cost": 127988
+        },
+        {
+          "name": "Department of Defense Base Realignment and Closure, Army",
+          "cost": 99616
+        },
+        {
+          "name": "Department of Defense Base Realignment and Closure, Navy",
+          "cost": 122000
+        },
+        {
+          "name": "Department of Defense Base Realignment and Closure, Air Force",
+          "cost": 101817
+        },
+        {
+          "name": "Department of Defense Base Realignment and Closure, Defense-Wide",
+          "cost": 246975
+        },
+        {
+          "name": "Base Realignment and Closure, Army",
+          "cost": 2555
+        },
+        {
+          "name": "Fiscal Year 2005 Base Realignment and Closure, Defense-Wide",
+          "cost": 34000
+        }
+      ]
+    },
+    {
+      "name": "Family Housing",
+      "cost": 1647624,
+      "subcategories": [
+        {
+          "name": "Army Family Housing Construction",
+          "cost": 216835
+        },
+        {
+          "name": "Army Family Housing Operation and Maintenance",
+          "cost": 393253
+        },
+        {
+          "name": "Navy and Marine Corps Family Housing Construction",
+          "cost": 105044
+        },
+        {
+          "name": "Navy and Marine Corps Family Housing Operation and Maintenance",
+          "cost": 399680
+        },
+        {
+          "name": "Air Force Family Housing Construction",
+          "cost": 134777
+        },
+        {
+          "name": "Air Force Family Housing Operation and Maintenance",
+          "cost": 342883
+        },
+        {
+          "name": "Defense-Wide Family Housing Operation and Maintenance",
+          "cost": 45864
+        },
+        {
+          "name": "Family Housing Improvement Fund",
+          "cost": 9288
+        }
+      ]
+    },
+    {
+      "name": "Revolving and Management Funds",
+      "cost": 3931954,
+      "subcategories": [
+        {
+          "name": "National Defense Stockpile Transaction Fund",
+          "cost": 49854
+        },
+        {
+          "name": "National Defense Sealift Fund",
+          "cost": 30936
+        },
+        {
+          "name": "Army Working Capital Fund",
+          "cost": 2977
+        },
+        {
+          "name": "Navy Working Capital Fund",
+          "cost": 466
+        },
+        {
+          "name": "Air Force Working Capital Fund",
+          "cost": 1232
+        },
+        {
+          "name": "Defense-Wide Working Capital Fund",
+          "cost": 2433424
+        },
+        {
+          "name": "Defense Commissary Agency Working Capital Fund",
+          "cost": 1337723
+        },
+        {
+          "name": "Defense Counterintelligence and Security Agency Working Capital Fund",
+          "cost": 75342
+        }
+      ]
+    }
+  ]
+}
